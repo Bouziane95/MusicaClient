@@ -44,10 +44,15 @@ export default {
       .catch(errorHandler);
   },
 
-  getItems() {
-    return service
-      .get("/api/items")
-      .then((res) => res.data)
-      .catch(errorHandler);
+  getAllBands(endpoint) {
+    return service.get(endpoint);
+  },
+
+  getOneBand(id) {
+    return service.get("/bands/"+id);
+  },
+
+  createBand(endPoint,data){
+    return service.post (endPoint, data);
   },
 };

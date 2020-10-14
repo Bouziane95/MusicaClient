@@ -1,11 +1,44 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import apiHandler from "../api/apiHandler";
+import { Link } from "react-router-dom";
 
 export default class Bands extends Component {
-    render() {
-        return (
-            <div>
-                <h1>I'm the Bands pages</h1>
-            </div>
-        )
-    }
+  state = {
+    bands: [],
+  };
+
+  componentDidMount() {
+    apiHandler
+      .getAllBands("/bands")
+      .then((apiRes) => {
+        this.setState({ bands: apiRes.data });
+      })
+      .catch((apiErr) => {
+        console.log(apiErr);
+      });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1> BANDS SECTION</h1>
+        <Link to={`/bands/add`}>ADD BAND</Link>
+        {this.state.bands.map((band) => (
+          <div>
+            <img
+              className="bandPic"
+              src={band.bandPicture}
+              alt="bandPic"
+            />
+            <Link key={band.bandName} to={`/bands/${band._id}`}>
+              {band.bandName}
+            </Link>
+            <h3>{band.musicStyle}</h3>
+            <h4>{band.lookingFor}</h4>
+            <h5>{band.location}</h5>
+          </div>
+        ))}
+      </div>
+    );
+  }
 }
