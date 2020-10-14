@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import apiHandler from "../api/apiHandler";
 import { Link } from "react-router-dom";
 
+
 export default class Bands extends Component {
   state = {
     bands: [],

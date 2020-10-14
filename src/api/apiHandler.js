@@ -55,4 +55,24 @@ export default {
   createBand(endPoint,data){
     return service.post (endPoint, data);
   },
-};
+
+  getAllUsers(endpoint) {
+    return service.get(endpoint);
+  },
+
+  getOneUser(id) {
+    return service.get("/users/" + id);
+  },
+
+  createUser(endpoint, data) {
+    return service.post(endpoint, data);
+  },
+
+  updateUser(endpoint, data) {
+    return service.patch(endpoint, data);
+  },
+
+  deleteUser(endpoint, data) {
+    return service.delete(endpoint, data);
+  },
+}

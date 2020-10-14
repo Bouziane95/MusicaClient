@@ -39,8 +39,8 @@ function App() {
         <ProtectedRoute exact path="/profile/:id/bands" component={UserBands} />
         <ProtectedRoute exact path="/profile/:id/bands/edit" component={UserBandsEdit} />
          {/* ///USER ROUTES/// */}
-         <Route exact path="/:id/message" component={SendMessage} />
-        <Route exact path="/:id" component={UserPage} />
+        <Route exact path="/:id/message" component={SendMessage} />
+        <Route exact path="/users/:id" component={UserPage} />
       </Switch>
     </div>
   );
