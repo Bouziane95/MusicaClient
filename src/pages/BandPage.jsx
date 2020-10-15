@@ -35,7 +35,8 @@ export default class Bandpage extends Component {
             <h5>{this.state.bands.location}</h5>
             <p>{this.state.bands.description}</p>
             <p>{this.state.bands.email}</p>
-            <a>{this.state.bands.link}</a>
+            {/* <a>{this.state.bands.link}</a> */}
+            <Link>{this.state.bands.link}</Link>
 
             <Link to={`/bands`}>CLOSE</Link>
 

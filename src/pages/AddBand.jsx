@@ -54,35 +54,13 @@ this.setState({musicStyle: [...this.state.musicStyle, value]});
             <label> Band Name</label>
             <input name="bandName" type="text" />
           </Form.Field>
-          {/* <Form.Field>
-            <label for="musicStyle">What style does your band play ?</label>
-            <select name="musicStyle" id="bandStyleSelect">
-              <option value="Rock">Rock</option>
-              <option value="Rap">Rap</option>
-              <option value="Jazz">Jazz</option>
-              <option value="Blues">Blues</option>
-              <option value="Metal">Metal</option>
-              <option value="Funk">Funk</option>
-            </select>
-          </Form.Field> */}
+          
 
           {/* ///DROPDOWN///  */}
           <DropDownMusic callBack={this.getValueFromDropDown} />
           <DropDownInstruments />
           {/* ///DROPDOWN/// */}
-
-          {/* <Form.Field>
-            <label for="lookingFor">What are you looking for ? </label>
-
-            <select name="lookingFor" id="lookingFor">
-              <option value="Guitarist">Guitarist</option>
-              <option value="Bassist">Bassist</option>
-              <option value="Drummer">Drummer</option>
-              <option value="Singer">Singer</option>
-              <option value="Bolosse">Bolosse</option>
-            </select>
-          </Form.Field> */}
-
+          
           <Form.Field>
             <label> Describe your band :)</label>
             <input name="description" type="string" />

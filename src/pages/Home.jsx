@@ -3,6 +3,7 @@ import apiHandler from "../api/apiHandler";
 import {Link} from "react-router-dom";
 import { Card, Icon, Image } from 'semantic-ui-react'
 
+
 class Home extends React.Component {
 
   state = {
@@ -30,21 +31,18 @@ class Home extends React.Component {
         return (
             <div>
                 <h1>I'm the user page</h1>
-                
+                        <Card.Group>
                 {this.state.users.map((user) => {
-                  
-                    
                     return (
                         <Link
                         key = {user._id}
                         to={`/users/${user._id}`}>
-                        <Card.Group>
                         <Card>
                             <Image src={user.profilePicture} alt={user.firstName} wrapped ui={false} />
                         <Card.Content>
                         <Card.Header>{user.firstName}</Card.Header>
                         <Card.Meta>
-                         <span>{user.age}</span>
+                         <span>{user.age} ans</span>
                         </Card.Meta>
                          <Card.Description>
                         {user.description}
@@ -57,12 +55,14 @@ class Home extends React.Component {
                     </a>
                     </Card.Content>
                  </Card>
-                 </Card.Group>
                  
                  </Link>
+                
                     )
                     
                 })}
+                 </Card.Group>
+                 
                 
                 
             </div>

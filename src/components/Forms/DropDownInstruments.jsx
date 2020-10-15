@@ -6,12 +6,10 @@ const options = [
   { key: 'Bassist', text: 'Bassist', value: 'Bassist', name: "musicStyle" },
   { key: 'Drummer', text: 'Drummer', value: 'Drummer', name: "musicStyle" },
   { key: 'Singer', text: 'Singer', value: 'Singer', name: "musicStyle" },
-  { key: 'Bolosse', text: 'Bolosse', value: 'Bolosse', name: "musicStyle" },
-
 ]
 
-const DropdownExampleMultipleSelection = () => (
-  <Dropdown placeholder='Instruments' fluid multiple selection options={options} />
-)
+const DropdownExampleMultipleSelection = ({callback}) => {
+return <Dropdown onChange={event =>callback(event.target.querySelector("span").innerHTML)} placeholder="What instruments do you play ?" fluid multiple selection options={options} />
+}
 
 export default DropdownExampleMultipleSelection
