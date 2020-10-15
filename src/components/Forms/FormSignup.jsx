@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { UserContext } from "../Auth/UserContext";
 import apiHandler from "../../api/apiHandler";
+import { Button, Checkbox, Form } from 'semantic-ui-react'
+import css from "../../styles/global.css"
 
 class FormSignup extends Component {
   static contextType = UserContext;
@@ -56,7 +58,6 @@ class FormSignup extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
     if (this.props.action === "edit"){
       this.updateUser();
     } else {
@@ -66,19 +67,26 @@ class FormSignup extends Component {
 
   render() {
     return (
+      <div className="container">
       <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
         <label htmlFor="profilePicture">Profile Picture</label>
         <input type="file" id="profilePicture" name="profilePicture" />
+
         <label htmlFor="email">Email</label>
         <input type="email" id="email" name="email" />
+
         <label htmlFor="password">Password</label>
         <input type="password" id="password" name="password" />
+
         <label htmlFor="firstName">First Name</label>
         <input type="text" id="firstName" name="firstName" />
+
         <label htmlFor="lastName">Last Name</label>
         <input type="text" id="lastName" name="lastName" />
+
         <label htmlFor="age">Age</label>
-        <input type="text" id="age" name="age" />
+        <input type="number" id="age" name="age" placeholder="Vous devez avoir minimum 18 ans" min="18" max="100" />
+        
         <label htmlFor="description">Description</label>
         <textarea type="text" id="description" name="description" />
 
@@ -96,8 +104,9 @@ class FormSignup extends Component {
           <option value="Basse">Basse</option>
         </select>
 
-        <button>Submit</button>
+        <button type="submit" value="Submit">Submit</button>
       </form>
+      </div>
     );
   }
 }

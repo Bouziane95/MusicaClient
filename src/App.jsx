@@ -15,6 +15,7 @@ import MessageBox from "./pages/MessageBox";
 import ProfileEdit from "./pages/ProfileEdit";
 import UserBands from "./pages/UserBands";
 import UserBandsEdit from "./pages/UserBandsEdit";
+import 'semantic-ui-css/semantic.min.css'
 
 function App() {
   return (
