@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import NavMain from "./components/NavMain";
+import DropDownMusic from "./components/Forms/DropDownMusic";
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
@@ -15,6 +16,7 @@ import MessageBox from "./pages/MessageBox";
 import ProfileEdit from "./pages/ProfileEdit";
 import UserBands from "./pages/UserBands";
 import UserBandsEdit from "./pages/UserBandsEdit";
+import 'semantic-ui-css/semantic.min.css'
 
 function App() {
   return (
