@@ -13,6 +13,7 @@ export default class Bands extends Component {
       .getAllBands("/bands")
       .then((apiRes) => {
         this.setState({ bands: apiRes.data });
+        console.log(apiRes)
       })
       .catch((apiErr) => {
         console.log(apiErr);

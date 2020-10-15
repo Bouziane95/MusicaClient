@@ -7,11 +7,11 @@ import DropDownInstruments from "../components/Forms/DropDownInstruments";
 export default class AddBand extends Component {
   state = {
     bandPicture: "",
-    // bandBoss_id: {Schema.Types.ObjectId, ref: "User" },
+    // bandBoss_id: ,
     bandName: "",
     musicStyle: [],
     groupMembers: [""],
-    lookingFor: [""],
+    lookingFor: [],
     description: "",
     email: "",
     link: "",
@@ -40,10 +40,11 @@ export default class AddBand extends Component {
   getValueFromDropDown= (value)=> {
 this.setState({musicStyle: [...this.state.musicStyle, value]});
   }
+
   render() {
     return (
       <div>
-        <h1> Add A BAND</h1>
+        <h1> ADD A BAND</h1>
 
         <Form onChange={this.handleChange} onClick={this.handleSubmit}>
           <Form.Field>

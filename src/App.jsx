@@ -1,7 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import NavMain from "./components/NavMain";
-import DropDownMusic from "./components/Forms/DropDownMusic";
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
@@ -39,7 +38,7 @@ function App() {
         <ProtectedRoute exact path="/profile" component={Profile} />
         <ProtectedRoute exact path="/profile/:id/edit" component={ProfileEdit} />
         <ProtectedRoute exact path="/profile/:id/bands" component={UserBands} />
-        <ProtectedRoute exact path="/profile/:id/bands/edit" component={UserBandsEdit} />
+        <Route exact path="/profile/:id/bands/edit" component={UserBandsEdit} />
          {/* ///USER ROUTES/// */}
         <Route exact path="/:id/message" component={SendMessage} />
         <Route exact path="/users/:id" component={UserPage} />
