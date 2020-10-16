@@ -3,7 +3,7 @@ import apiHandler from "../api/apiHandler";
 import { Button, Form} from "semantic-ui-react";
 import DropDownMusic from "../components/Forms/DropDownMusic";
 import DropDownLookingFor from "../components/Forms/DropDownLookingFor";
-import {buildFormData} from "../Utils"
+import {buildFormData} from "../utils"
 
 export default class AddBand extends Component {
   state = {
