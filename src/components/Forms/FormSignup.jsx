@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { UserContext } from "../Auth/UserContext";
 import apiHandler from "../../api/apiHandler";
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 import DropDownLookingFor from '../Forms/DropDownLookingFor'
 import DropDownInstruments from "../Forms/DropDownInstruments"
+import {buildFormData} from "../../utils"
 
 class FormSignup extends Component {
   static contextType = UserContext;
@@ -22,12 +23,11 @@ class FormSignup extends Component {
   };
 
   getValueFromDropDown = (data) => {
-    console.log(data)
-    this.setState({lookingFor:  data});
+    this.setState({lookingFor: data.value});
   }
 
-  getValueFromDropDownInstruments = (value) => {
-    this.setState({instrumentsPlayed: [...this.state.instrumentsPlayed, value]});
+  getValueFromDropDownInstruments = (data) => {
+    this.setState({instrumentsPlayed: data.value});
   }
 
   handleChange = (event) => {
@@ -44,14 +44,7 @@ class FormSignup extends Component {
   createUser(){
 
     const fd = new FormData();
-    fd.append("email", this.state.email);
-    fd.append("password", this.state.password);
-    fd.append("firstName", this.state.firstName);
-    fd.append("lastName", this.state.lastName);
-    fd.append("age", this.state.age);
-    fd.append("profilePicture", this.state.profilePicture);
-    fd.append("description", this.state.description);
-    fd.append("lookingFor", this.state.lookingFor);
+    buildFormData(fd, this.state);
 
     apiHandler.signup(fd)
     .then(() => {
@@ -62,17 +55,9 @@ class FormSignup extends Component {
     });
   }
 
-  updateUser(){
-    console.log("update le form")
-  }
-
   handleSubmit = (event) => {
     event.preventDefault();
-    if (this.props.action === "edit"){
-      this.updateUser();
-    } else {
-      this.createUser();
-    }
+    this.createUser();
   };
 
   render() {
@@ -115,7 +100,7 @@ class FormSignup extends Component {
 
         <DropDownLookingFor callBack = {this.getValueFromDropDown} />
         <br/>
-        <DropDownInstruments callback = {this.getValueFromDropDownInstruments}/>
+        <DropDownInstruments callBack = {this.getValueFromDropDownInstruments}/>
         <br/>
         <Button type="submit" value="Submit">Submit</Button>
       </Form>
