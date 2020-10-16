@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
+import EditUser from "../pages/EditUser"
 
-export default class ProfileEdit extends Component {
-    render() {
+const ProfileEdit = (props) => {
+    
         return (
             <div>
                 <h1>I'm the Profile edit pages</h1>
+                <EditUser action = "edit" id={props}/>
             </div>
         )
-    }
+
 }
+
+export default ProfileEdit;
+
