@@ -5,7 +5,7 @@ import apiHandler from "../../api/apiHandler"
 import {Button, Form} from "semantic-ui-react"
 import DropDownLookingFor from "../Forms/DropDownLookingFor"
 import DropDownInstruments from "../Forms/DropDownInstruments"
-import {buildFormData} from "../../utils"
+import {buildFormData} from "../../Utils"
 import UploadWidget from "../../uploadWidget";
 
 class FormEdit extends Component {
@@ -58,12 +58,13 @@ class FormEdit extends Component {
     updateUser(){
         const fd = new FormData();
         buildFormData(fd, this.state);
+        console.log("fd et state")
+        console.log(fd)
+        console.log(this.state)
 
-        apiHandler.updateUser("/users/" + this.state.data.id,fd).then((data) => {
-            console.log("dans update user")
-            console.log(data)
-            console.log(this.props)
-            
+        apiHandler.updateUser("/users/" + this.props.match.params.id, fd)
+        .then((apiRes) => {
+            console.log(apiRes) 
         })
         .catch((apiError) => {
             console.log(apiError);
@@ -80,7 +81,6 @@ class FormEdit extends Component {
     }
 
     render() {
-       console.log(this.state)
         return (
         <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
             <Form.Field>
