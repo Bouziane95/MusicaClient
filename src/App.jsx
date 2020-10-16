@@ -35,10 +35,10 @@ function App() {
         <Route exact path="/messages" component={MessageBox} />
         <Route exact path="/messages/:id" component={SendMessage} />
         {/* ///PROFILE ROUTES/// */}
-        <ProtectedRoute exact path="/profile" component={Profile} />
-        <ProtectedRoute exact path="/profile/:id/edit" component={ProfileEdit} />
-        <ProtectedRoute exact path="/profile/:id/bands" component={UserBands} />
-        <Route exact path="/profile/:id/bands/edit" component={UserBandsEdit} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/profile/:id/edit" component={ProfileEdit} />
+        <Route exact path="/profile/:id/bands" component={UserBands} />
+        <Route exact path="/profile/:id/bands/:id/edit" component={UserBandsEdit} />
          {/* ///USER ROUTES/// */}
         <Route exact path="/:id/message" component={SendMessage} />
         <Route exact path="/users/:id" component={UserPage} />

@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { UserContext } from "../Auth/UserContext";
 import apiHandler from "../../api/apiHandler";
+import { Button, Checkbox, Form } from 'semantic-ui-react'
+import DropDownLookingFor from '../Forms/DropDownLookingFor'
+import DropDownInstruments from "../Forms/DropDownInstruments"
 
 class FormSignup extends Component {
   static contextType = UserContext;
@@ -12,11 +15,20 @@ class FormSignup extends Component {
     firstName: "",
     lastName: "",
     age: 0,
-    profilePicture: "",
+    profilePicture: "https://thevoicefinder.com/wp-content/themes/the-voice-finder/images/default-img.png",
     description: "",
-    lookingFor: [""],
-    instrumentsPlayed:[""],
+    lookingFor: [],
+    instrumentsPlayed:[],
   };
+
+  getValueFromDropDown = (data) => {
+    console.log(data)
+    this.setState({lookingFor:  data});
+  }
+
+  getValueFromDropDownInstruments = (value) => {
+    this.setState({instrumentsPlayed: [...this.state.instrumentsPlayed, value]});
+  }
 
   handleChange = (event) => {
     const value =
@@ -41,7 +53,7 @@ class FormSignup extends Component {
     fd.append("description", this.state.description);
     fd.append("lookingFor", this.state.lookingFor);
 
-    apiHandler.createUser("/users", fd)
+    apiHandler.signup(fd)
     .then(() => {
       this.props.history.push("/signin");
     })
@@ -56,7 +68,6 @@ class FormSignup extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
     if (this.props.action === "edit"){
       this.updateUser();
     } else {
@@ -66,38 +77,48 @@ class FormSignup extends Component {
 
   render() {
     return (
-      <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+      <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+      <Form.Field>
         <label htmlFor="profilePicture">Profile Picture</label>
         <input type="file" id="profilePicture" name="profilePicture" />
+      </Form.Field>
+
+      <Form.Field>
         <label htmlFor="email">Email</label>
         <input type="email" id="email" name="email" />
+      </Form.Field>
+
+      <Form.Field>
         <label htmlFor="password">Password</label>
         <input type="password" id="password" name="password" />
+      </Form.Field>
+
+      <Form.Field>
         <label htmlFor="firstName">First Name</label>
         <input type="text" id="firstName" name="firstName" />
+      </Form.Field>
+
+      <Form.Field>
         <label htmlFor="lastName">Last Name</label>
         <input type="text" id="lastName" name="lastName" />
+      </Form.Field>
+
+      <Form.Field>
         <label htmlFor="age">Age</label>
-        <input type="text" id="age" name="age" />
+        <input type="number" id="age" name="age" placeholder="Vous devez avoir minimum 18 ans" min="18" max="100" />
+      </Form.Field>
+
+      <Form.Field>
         <label htmlFor="description">Description</label>
         <textarea type="text" id="description" name="description" />
+      </Form.Field>
 
-        <select name="lookingFor" id="lookingFor">
-          <option value="">What are you looking for ?</option>
-          <option value="Guitariste">Guitariste</option>
-          <option value="Batteur">Batteur</option>
-          <option value="Basse">Basse</option>
-        </select>
-
-        <select name="instrumentsPlayed" id="instrumentsPlayed">
-          <option value="">What instruments you play ?</option>
-          <option value="Guitare">Guitare</option>
-          <option value="Batterie">Batterie</option>
-          <option value="Basse">Basse</option>
-        </select>
-
-        <button>Submit</button>
-      </form>
+        <DropDownLookingFor callBack = {this.getValueFromDropDown} />
+        <br/>
+        <DropDownInstruments callback = {this.getValueFromDropDownInstruments}/>
+        <br/>
+        <Button type="submit" value="Submit">Submit</Button>
+      </Form>
     );
   }
 }

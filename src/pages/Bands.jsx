@@ -13,7 +13,7 @@ export default class Bands extends Component {
       .getAllBands("/bands")
       .then((apiRes) => {
         this.setState({ bands: apiRes.data });
-        console.log(apiRes)
+        // console.log(apiRes)
       })
       .catch((apiErr) => {
         console.log(apiErr);
@@ -21,6 +21,7 @@ export default class Bands extends Component {
   }
 
   render() {
+    console.log(this.state.bands);
     return (
       <div>
         <h1> BANDS SECTION</h1>
@@ -32,6 +33,8 @@ export default class Bands extends Component {
               src={band.bandPicture}
               alt="bandPic"
             />
+            <h2>{band.bandBoss_id.firstName} {band.bandBoss_id.lastName}</h2>
+
             <Link key={band.bandName} to={`/bands/${band._id}`}>
               {band.bandName}
             </Link>

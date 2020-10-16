@@ -2,15 +2,15 @@ import React, { Component } from "react";
 import apiHandler from "../api/apiHandler";
 import { Button, Form} from "semantic-ui-react";
 import DropDownMusic from "../components/Forms/DropDownMusic";
-import DropDownInstruments from "../components/Forms/DropDownInstruments";
+import DropDownLookingFor from "../components/Forms/DropDownLookingFor";
+import {buildFormData} from "../Utils"
 
 export default class AddBand extends Component {
   state = {
     bandPicture: "",
-    // bandBoss_id: ,
+    bandBoss_id: [],
     bandName: "",
     musicStyle: [],
-    groupMembers: [""],
     lookingFor: [],
     description: "",
     email: "",
@@ -20,25 +20,37 @@ export default class AddBand extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
+    const fd = new FormData()
+    buildFormData(fd, this.state)
+    
     apiHandler
-      .createBand("/bands", this.state)
+      .createBand(fd)
       .then((apiRes) => {
-        // console.log(apiRes);
+        console.log(apiRes);
+        this.props.history.push("/bands");
+        
       })
       .catch((apiError) => {
-        // console.log(apiError);
+        console.log(apiError);
       });
   };
 
   handleChange = (event) => {
     const name = event.target.name;
-    const value = event.target.value;
-    // event.target.type === "file" ? event.target.files[0] : event.target.value;
+    const value = event.target.type === "file" ? event.target.files[0] : event.target.value;
+    console.log(name, value)
     this.setState({ [name]: value });
   };
 
-  getValueFromDropDown= (value)=> {
-this.setState({musicStyle: [...this.state.musicStyle, value]});
+
+  getValueFromDropDownMusicStyle = (data) => {
+    
+    this.setState({musicStyle: data.value});
+  }
+
+  getValueFromDropDownLookingFor = (data) => {
+    console.log(data)
+    this.setState({lookingFor: data.value});
   }
 
   render() {
@@ -46,46 +58,24 @@ this.setState({musicStyle: [...this.state.musicStyle, value]});
       <div>
         <h1> ADD A BAND</h1>
 
-        <Form onChange={this.handleChange} onClick={this.handleSubmit}>
+        <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
           <Form.Field>
             <label>Band Picture</label>
-            <input name="bandPicture" type="file" id="bandPicture" />
+            <input name="bandPicture" type="file"/>
           </Form.Field>
           <Form.Field>
             <label> Band Name</label>
             <input name="bandName" type="text" />
           </Form.Field>
-          {/* <Form.Field>
-            <label for="musicStyle">What style does your band play ?</label>
-            <select name="musicStyle" id="bandStyleSelect">
-              <option value="Rock">Rock</option>
-              <option value="Rap">Rap</option>
-              <option value="Jazz">Jazz</option>
-              <option value="Blues">Blues</option>
-              <option value="Metal">Metal</option>
-              <option value="Funk">Funk</option>
-            </select>
-          </Form.Field> */}
+          
 
           {/* ///DROPDOWN///  */}
-          <DropDownMusic callBack={this.getValueFromDropDown} />
-          <DropDownInstruments />
+          <DropDownMusic callBack={this.getValueFromDropDownMusicStyle} />
+          <DropDownLookingFor callBack={this.getValueFromDropDownLookingFor}  />
           {/* ///DROPDOWN/// */}
-
-          {/* <Form.Field>
-            <label for="lookingFor">What are you looking for ? </label>
-
-            <select name="lookingFor" id="lookingFor">
-              <option value="Guitarist">Guitarist</option>
-              <option value="Bassist">Bassist</option>
-              <option value="Drummer">Drummer</option>
-              <option value="Singer">Singer</option>
-              <option value="Bolosse">Bolosse</option>
-            </select>
-          </Form.Field> */}
-
+          
           <Form.Field>
-            <label> Describe your band :)</label>
+            <label> Describe your band </label>
             <input name="description" type="string" />
           </Form.Field>
 

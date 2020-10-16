@@ -52,8 +52,19 @@ export default {
     return service.get("/bands/"+id);
   },
 
-  createBand(endPoint,data){
-    return service.post (endPoint, data);
+  getUserBands() {
+    return service
+      .get("/:id/bands")
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  createBand(data){
+    return service.post ("/bands", data);
+  },
+
+  updateBand(endpoint, data) {
+    return service.patch(endpoint, data);
   },
 
   getAllUsers(endpoint) {
