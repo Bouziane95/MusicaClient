@@ -3,7 +3,7 @@ import apiHandler from "../api/apiHandler";
 import { Button, Form } from "semantic-ui-react";
 import DropDownMusic from "../components/Forms/DropDownMusic";
 import DropDownLookingFor from "../components/Forms/DropDownLookingFor";
-// import { buildFormData } from "../utils";
+import { buildFormData } from "../Utils";
 
 export default class UserBandsEdit extends Component {
   state = {

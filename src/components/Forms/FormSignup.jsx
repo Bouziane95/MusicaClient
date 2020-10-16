@@ -5,7 +5,7 @@ import apiHandler from "../../api/apiHandler";
 import { Button, Form } from 'semantic-ui-react'
 import DropDownLookingFor from '../Forms/DropDownLookingFor'
 import DropDownInstruments from "../Forms/DropDownInstruments"
-import {buildFormData} from "../../utils"
+import {buildFormData} from "../../Utils"
 
 class FormSignup extends Component {
   static contextType = UserContext;
