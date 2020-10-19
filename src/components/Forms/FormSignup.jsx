@@ -6,6 +6,7 @@ import { Button, Form } from 'semantic-ui-react'
 import DropDownLookingFor from '../Forms/DropDownLookingFor'
 import DropDownInstruments from "../Forms/DropDownInstruments"
 import {buildFormData} from "../../Utils"
+import AutoComplete from "../../pages/AutoComplete"
 
 class FormSignup extends Component {
   static contextType = UserContext;
@@ -20,6 +21,7 @@ class FormSignup extends Component {
     description: "",
     lookingFor: [],
     instrumentsPlayed:[],
+    location:[],
   };
 
   getValueFromDropDown = (data) => {
@@ -42,7 +44,6 @@ class FormSignup extends Component {
   };
 
   createUser(){
-
     const fd = new FormData();
     buildFormData(fd, this.state);
 
@@ -60,7 +61,13 @@ class FormSignup extends Component {
     this.createUser();
   };
 
+  handlePlace = (place) => {
+    const locationCoordinates = place.geometry.coordinates;
+    this.setState({ location: locationCoordinates });
+  };
+
   render() {
+    console.log(this.state)
     return (
       <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
       <Form.Field>
@@ -97,10 +104,16 @@ class FormSignup extends Component {
         <label htmlFor="description">Description</label>
         <textarea type="text" id="description" name="description" />
       </Form.Field>
+      
+      <Form.Field>
+        <label htmlFor="location">Address</label>
+        <AutoComplete name="location" id ="location" onSelect= {this.handlePlace}/>
+      </Form.Field>
 
-        <DropDownLookingFor callBack = {this.getValueFromDropDown} />
+
+        <DropDownLookingFor value={this.state.lookingFor} callBack = {this.getValueFromDropDown} />
         <br/>
-        <DropDownInstruments callBack = {this.getValueFromDropDownInstruments}/>
+        <DropDownInstruments value={this.state.instrumentsPlayed} callBack = {this.getValueFromDropDownInstruments}/>
         <br/>
         <Button type="submit" value="Submit">Submit</Button>
       </Form>
