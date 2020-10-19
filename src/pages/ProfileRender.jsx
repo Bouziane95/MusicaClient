@@ -5,6 +5,7 @@ import {Button, Card, Icon, Image} from "semantic-ui-react"
 import { withUser } from '../components/Auth/withUser';
 
 class ProfileRender extends Component {
+    
 
     state={
         firstName : "",
@@ -36,11 +37,13 @@ class ProfileRender extends Component {
     }
 
     deleteAccount = () =>{
+        const { context } = this.props;
+
         apiHandler.deleteUser("/users/" + this.props.match.params.id, this.state)
         .then(() => {
             apiHandler.logout().then(() => {
-                console.log("Success log out")
-                this.props.history.push("/")    
+                context.removeUser();
+                this.props.history.push("/")
             })
             .catch((error) => {
                 console.log(error)
@@ -78,5 +81,5 @@ class ProfileRender extends Component {
         )
     }
 }
-// export default withUser(ProfileRender);
-export default withRouter(ProfileRender);
+
+export default withRouter(withUser(ProfileRender))
