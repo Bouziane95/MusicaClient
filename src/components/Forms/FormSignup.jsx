@@ -22,6 +22,7 @@ class FormSignup extends Component {
     lookingFor: [],
     instrumentsPlayed:[],
     location:[],
+    locationAddress:"",
   };
 
   getValueFromDropDown = (data) => {
@@ -63,13 +64,13 @@ class FormSignup extends Component {
 
   handlePlace = (place) => {
     const locationCoordinates = place.geometry.coordinates;
-    this.setState({ location: locationCoordinates });
+    const locationAddres = place.place_name;
+    this.setState({ location: locationCoordinates, locationAddress: locationAddres });
   };
 
   render() {
-    console.log(this.state)
     return (
-      <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+    <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
       <Form.Field>
         <label htmlFor="profilePicture">Profile Picture</label>
         <input type="file" id="profilePicture" name="profilePicture" />
@@ -106,17 +107,18 @@ class FormSignup extends Component {
       </Form.Field>
       
       <Form.Field>
-        <label htmlFor="location">Address</label>
+        <label htmlFor="location">In which city you live ?</label>
         <AutoComplete name="location" id ="location" onSelect= {this.handlePlace}/>
       </Form.Field>
 
 
-        <DropDownLookingFor value={this.state.lookingFor} callBack = {this.getValueFromDropDown} />
-        <br/>
-        <DropDownInstruments value={this.state.instrumentsPlayed} callBack = {this.getValueFromDropDownInstruments}/>
-        <br/>
-        <Button type="submit" value="Submit">Submit</Button>
-      </Form>
+      <DropDownLookingFor value={this.state.lookingFor} callBack = {this.getValueFromDropDown} />
+      <br/>
+      <DropDownInstruments value={this.state.instrumentsPlayed} callBack = {this.getValueFromDropDownInstruments}/>
+      <br/>
+        
+      <Button type="submit" value="Submit">Submit</Button>
+    </Form>
     );
   }
 }

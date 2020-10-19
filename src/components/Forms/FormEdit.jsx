@@ -19,6 +19,7 @@ class FormEdit extends Component {
         lookingFor: [],
         instrumentsPlayed:[],
         age:"",
+        location: [],
     };
 
    componentDidMount(){
@@ -30,7 +31,8 @@ class FormEdit extends Component {
                profilePicture: apiRes.data.profilePicture,
                description: apiRes.data.description,
                lookingFor: apiRes.data.lookingFor,
-               instrumentsPlayed: apiRes.data.instrumentsPlayed
+               instrumentsPlayed: apiRes.data.instrumentsPlayed,
+               
            })
 
        }).catch((error) => console.log(error))

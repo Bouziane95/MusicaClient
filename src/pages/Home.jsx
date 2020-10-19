@@ -49,22 +49,16 @@ class Home extends React.Component {
                         </Card.Description>
                         </Card.Content>
                         <Card.Content extra>
-                    <a>x@
+                    <a>
                         <Icon name='music' />
                         {user.instrumentsPlayed}
                     </a>
                     </Card.Content>
                  </Card>
-                 
                  </Link>
-                
                     )
-                    
                 })}
                  </Card.Group>
-                 
-                
-                
             </div>
         )
     }
