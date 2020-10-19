@@ -21,6 +21,7 @@ export default class Bands extends Component {
   }
 
   render() {
+
     console.log(this.state.bands);
     return (
       <div>

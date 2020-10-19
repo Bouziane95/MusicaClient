@@ -30,6 +30,11 @@ const NavMain = (props) => {
         {context.isLoggedIn && (
           <React.Fragment>
           <li>
+            <Link to ={`/profile/${context.user._id}/bands`}>
+              My Bands
+            </Link>
+          </li>
+          <li>
             <Link to ={`/profile/${context.user._id}/edit`}>
               Edit
             </Link>
