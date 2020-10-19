@@ -19,6 +19,7 @@ class FormEdit extends Component {
         lookingFor: [],
         instrumentsPlayed:[],
         age:"",
+        location: [],
     };
 
    componentDidMount(){
@@ -30,7 +31,8 @@ class FormEdit extends Component {
                profilePicture: apiRes.data.profilePicture,
                description: apiRes.data.description,
                lookingFor: apiRes.data.lookingFor,
-               instrumentsPlayed: apiRes.data.instrumentsPlayed
+               instrumentsPlayed: apiRes.data.instrumentsPlayed,
+               
            })
        }).catch((error) => console.log(error))
    }
@@ -83,7 +85,7 @@ class FormEdit extends Component {
         if(!this.context.user) return <div>Loading</div>
 
 
-        return (
+        return (  
         <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
             <Form.Field>
                 <UploadWidget onFileSelect={this.handleFileSelect} name = "profilePicture" id ="profilePicture">
@@ -108,7 +110,7 @@ class FormEdit extends Component {
 
             <Form.Field>
                 <label htmlFor="age">Age</label>
-                <input type="number" id="age" name="age" placeholder="Vous devez avoir minimum 18 ans" min="18" max="100" />
+                <input type="number" id="age" name="age" placeholder="Vous devez avoir minimum 18 ans" min="18" max="100" value= {this.state.age} />
             </Form.Field>
             
             <DropDownLookingFor  value = {this.state.lookingFor} callBack = {this.getValueFromDropDown}/>

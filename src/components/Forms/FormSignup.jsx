@@ -6,6 +6,7 @@ import { Button, Form } from 'semantic-ui-react'
 import DropDownLookingFor from '../Forms/DropDownLookingFor'
 import DropDownInstruments from "../Forms/DropDownInstruments"
 import {buildFormData} from "../../Utils"
+import AutoComplete from "../../pages/AutoComplete"
 
 class FormSignup extends Component {
   static contextType = UserContext;
@@ -15,11 +16,13 @@ class FormSignup extends Component {
     password: "",
     firstName: "",
     lastName: "",
-    age: 0,
+    age: "",
     profilePicture: "https://thevoicefinder.com/wp-content/themes/the-voice-finder/images/default-img.png",
     description: "",
     lookingFor: [],
     instrumentsPlayed:[],
+    location:[],
+    locationAddress:"",
   };
 
   getValueFromDropDown = (data) => {
@@ -42,7 +45,6 @@ class FormSignup extends Component {
   };
 
   createUser(){
-
     const fd = new FormData();
     buildFormData(fd, this.state);
 
@@ -60,9 +62,15 @@ class FormSignup extends Component {
     this.createUser();
   };
 
+  handlePlace = (place) => {
+    const locationCoordinates = place.geometry.coordinates;
+    const locationAddres = place.place_name;
+    this.setState({ location: locationCoordinates, locationAddress: locationAddres });
+  };
+
   render() {
     return (
-      <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+    <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
       <Form.Field>
         <label htmlFor="profilePicture">Profile Picture</label>
         <input type="file" id="profilePicture" name="profilePicture" />
@@ -97,13 +105,20 @@ class FormSignup extends Component {
         <label htmlFor="description">Description</label>
         <textarea type="text" id="description" name="description" />
       </Form.Field>
+      
+      <Form.Field>
+        <label htmlFor="location">In which city you live ?</label>
+        <AutoComplete name="location" id ="location" onSelect= {this.handlePlace}/>
+      </Form.Field>
 
-        <DropDownLookingFor callBack = {this.getValueFromDropDown} />
-        <br/>
-        <DropDownInstruments callBack = {this.getValueFromDropDownInstruments}/>
-        <br/>
-        <Button type="submit" value="Submit">Submit</Button>
-      </Form>
+
+      <DropDownLookingFor value={this.state.lookingFor} callBack = {this.getValueFromDropDown} />
+      <br/>
+      <DropDownInstruments value={this.state.instrumentsPlayed} callBack = {this.getValueFromDropDownInstruments}/>
+      <br/>
+        
+      <Button type="submit" value="Submit">Submit</Button>
+    </Form>
     );
   }
 }
