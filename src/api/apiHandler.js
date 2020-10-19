@@ -52,11 +52,12 @@ export default {
     return service.get("/bands/"+id);
   },
 
-  getUserBands() {
-    return service
-      .get("/:id/bands")
-      .then((res) => res.data)
-      .catch(errorHandler);
+  getUserBands(endpoint) {
+    // return service
+    //   .get("/:id/bands")
+    //   .then((res) => res.data)
+    //   .catch(errorHandler);
+    return service.get(endpoint);
   },
 
   createBand(data){

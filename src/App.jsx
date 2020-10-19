@@ -38,7 +38,7 @@ function App() {
         <Route exact path="/profile/:id" component={Profile} />
         <Route exact path="/profile/:id/edit" component={ProfileEdit} />
         <Route exact path="/profile/:id/bands" component={UserBands} />
-        <Route exact path="/profile/:id/bands/:id/edit" component={UserBandsEdit} />
+        <Route exact path="/profile/bands/:id/edit" component={UserBandsEdit} />
          {/* ///USER ROUTES/// */}
         <Route exact path="/:id/message" component={SendMessage} />
         <Route exact path="/users/:id" component={UserPage} />
