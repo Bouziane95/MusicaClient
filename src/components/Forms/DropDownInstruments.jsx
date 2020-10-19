@@ -8,8 +8,8 @@ const options = [
   { key: 'Singer', text: 'Singer', value: 'Singer'},
 ]
 
-const DropdownExampleMultipleSelection = ({callBack}) => {
-return <Dropdown onChange={(event, data) => callBack(data) } placeholder="What instruments do you play ?" fluid multiple selection options={options} />
+const DropdownExampleMultipleSelection = ({value,callBack}) => {
+return <Dropdown value={value} onChange={(event, data) => callBack(data) } placeholder="What instruments do you play ?" fluid multiple selection options={options} />
 }
 
 export default DropdownExampleMultipleSelection

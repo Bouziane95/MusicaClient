@@ -21,7 +21,6 @@ const NavMain = (props) => {
   }
 
   return (
-    
     <nav className="NavMain">
       <NavLink exact to="/">
         <h3 className="logo">MUSICA</h3>
@@ -35,9 +34,9 @@ const NavMain = (props) => {
             </Link>
           </li>
             <li>
-              <NavLink to="/profile">
+              <Link to={`/profile/${context.user._id}`}>
                 {context.user && context.user.email}
-              </NavLink>
+              </Link>
             </li>
             <li>
               <p onClick={handleLogout}>Logout</p>

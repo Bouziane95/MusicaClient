@@ -1,11 +1,10 @@
 import React from "react";
+import ProfileRender from "../pages/ProfileRender"
 
 const Profile = (props) => {
   return (
     <div>
-    
-      <h1>I'm the Profile page</h1>
-
+      <ProfileRender/>
     </div>
   );
 };

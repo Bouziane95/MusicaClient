@@ -14,11 +14,11 @@ class FormEdit extends Component {
     state = {
         firstName: "",
         lastName: "",
-        age: 0,
         profilePicture: "",
         description: "",
         lookingFor: [],
         instrumentsPlayed:[],
+        age:"",
     };
 
    componentDidMount(){
@@ -58,13 +58,12 @@ class FormEdit extends Component {
     updateUser(){
         const fd = new FormData();
         buildFormData(fd, this.state);
-        console.log("fd et state")
         console.log(fd)
         console.log(this.state)
 
         apiHandler.updateUser("/users/" + this.props.match.params.id, fd)
         .then((apiRes) => {
-            console.log(apiRes) 
+            this.props.history.push("/profile")
         })
         .catch((apiError) => {
             console.log(apiError);
@@ -81,19 +80,21 @@ class FormEdit extends Component {
     }
 
     render() {
+
+        if(!this.context.user) return <div>Loading</div>
+
+
         return (
         <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
             <Form.Field>
                 <UploadWidget onFileSelect={this.handleFileSelect} name = "profilePicture" id ="profilePicture">
                     Upload Image
                 </UploadWidget>
-                <label htmlFor="profilePicture">Profile Picture</label>
-                <input type="file" id="profilePicture" name="profilePicture" />
             </Form.Field>
 
             <Form.Field>
                 <label htmlFor="firstName">First Name</label>
-                <input type="text" id="firstName" name="firstName" value={this.state.firstName}  />
+                <input type="text" id="firstName" name="firstName" defaultValue={this.context.user.firstName}  />
             </Form.Field>
 
             <Form.Field>
@@ -102,20 +103,19 @@ class FormEdit extends Component {
             </Form.Field>
 
             <Form.Field>
-                <label htmlFor="age">Age</label>
-                <input type="number" id="age" name="age" placeholder="Vous devez avoir minimum 18 ans" min="18" max="100" value= {this.state.age} />
-            </Form.Field>
-
-            <Form.Field>
                 <label htmlFor="description">Description</label>
                 <textarea type="text" id="description" name="description" value= {this.state.description} />
             </Form.Field>
 
-            <DropDownLookingFor value = {this.state.lookingFor} callBack = {this.getValueFromDropDown}/>
+            <Form.Field>
+                <label htmlFor="age">Age</label>
+                <input type="number" id="age" name="age" placeholder="Vous devez avoir minimum 18 ans" min="18" max="100" />
+            </Form.Field>
+            
+            <DropDownLookingFor  value = {this.state.lookingFor} callBack = {this.getValueFromDropDown}/>
             <br/>
             <DropDownInstruments value = {this.state.instrumentsPlayed} callBack = {this.getValueFromDropDownInstruments}/>
             <br/>
-
             <Button type="submit" value="Submit">Submit</Button>
         </Form>
         )
