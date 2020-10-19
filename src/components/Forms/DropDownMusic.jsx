@@ -10,9 +10,9 @@ const options = [
   { key: "Funk", text: "Funk", value: "Funk" },
 ];
 
-const DropdownExampleMultipleSelection = ({ callBack }) => {
+const DropdownExampleMultipleSelection = ({value, callBack }) => {
   return (
-    <Dropdown
+    <Dropdown value={value}
       onChange={(event, data) => callBack(data)} placeholder="Music Style" fluid multiple selection options={options}
     />
   );

@@ -1,6 +1,7 @@
-import React from "react";
+ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import NavMain from "./components/NavMain";
+import NavContent from "./components/NavContent";
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
@@ -20,7 +21,8 @@ import 'semantic-ui-css/semantic.min.css'
 function App() {
   return (
     <div className="App">
-      <NavMain />
+    <NavContent/>
+      {/* <NavMain /> */}
       <Switch>
         {/* ///HOME ROUTE/// */}
         <Route exact path="/" component={Home} />
@@ -38,7 +40,7 @@ function App() {
         <Route exact path="/profile/:id" component={Profile} />
         <Route exact path="/profile/:id/edit" component={ProfileEdit} />
         <Route exact path="/profile/:id/bands" component={UserBands} />
-        <Route exact path="/profile/bands/:id/edit" component={UserBandsEdit} />
+        <Route exact path="/profile/:id/bands/edit" component={UserBandsEdit} />
          {/* ///USER ROUTES/// */}
         <Route exact path="/:id/message" component={SendMessage} />
         <Route exact path="/users/:id" component={UserPage} />

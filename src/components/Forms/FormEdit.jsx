@@ -32,7 +32,6 @@ class FormEdit extends Component {
                lookingFor: apiRes.data.lookingFor,
                instrumentsPlayed: apiRes.data.instrumentsPlayed
            })
-
        }).catch((error) => console.log(error))
    }
 

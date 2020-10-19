@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import {withRouter} from "react-router-dom";
 import apiHandler from "../api/apiHandler";
 import { Button, Form } from "semantic-ui-react";
 import DropDownMusic from "../components/Forms/DropDownMusic";
 import DropDownLookingFor from "../components/Forms/DropDownLookingFor";
 import { buildFormData } from "../Utils";
+import UploadWidget from "../uploadWidget";
 
 export default class UserBandsEdit extends Component {
   state = {
     bandPicture: "",
-    bandBoss_id: [],
     bandName: "",
     musicStyle: [],
     lookingFor: [],
@@ -21,18 +22,20 @@ export default class UserBandsEdit extends Component {
     apiHandler
       .getOneBand(this.props.match.params.id)
       .then((apiResponse) => {
-        // console.log(apiResponse.data);
-        this.setState({ band: apiResponse.data });
+        console.log(apiResponse.data);
+        this.setState({
+          bandName: apiResponse.data.bandName,
+          musicStyle: apiResponse.data.musicStyle,
+          lookingFor: apiResponse.data.lookingFor,
+          description: apiResponse.data.description,
+          email: apiResponse.data.email,
+          link: apiResponse.data.link,
+        });
+        console.log(this.state.bandName);
       })
       .catch((error) => console.log(error));
     // console.log(this.props.match.params.id);
   }
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.updateBand();
-    this.props.history.push("/profile/:id/bands");
-  };
 
   handleChange = (event) => {
     const name = event.target.name;
@@ -42,15 +45,28 @@ export default class UserBandsEdit extends Component {
     this.setState({ [name]: value });
   };
 
-  updateClothes = () => {
+  updateBand = () => {
+    const fd = new FormData();
+    buildFormData(fd, this.state);
+
     apiHandler
-      .updateOne("/bands/" + this.props.match.params.id, this.state)
-      .then(() => {
-        this.props.history.push("/clothes");
+      .updateBand("/bands/" + this.props.match.params.id, fd)
+      .then((apiResponse) => {
+        this.props.history.push("/profile/"+ this.props.match.params.id + "/bands")
       })
-      .catch((apiError) => {
-        console.log(apiError);
+      .catch((err) => {
+        console.log(err);
       });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.updateBand();
+    // this.props.history.push("/profile/:id/bands");
+  };
+
+  handleFileSelect = ({ tmpUrl, file }) => {
+    this.setState({ bandPicture: file });
   };
 
   render() {
@@ -60,32 +76,48 @@ export default class UserBandsEdit extends Component {
 
         <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
           <Form.Field>
-            <label>Band Picture</label>
-            <input name="bandPicture" type="file" />
+            <UploadWidget
+              onFileSelect={this.handleFileSelect}
+              name="bandPicture"
+              id="bandPicture"
+            >
+              Upload new picture
+            </UploadWidget>
           </Form.Field>
+
           <Form.Field>
             <label> Band Name</label>
-            <input name="bandName" type="text" />
+            <input name="bandName" type="text" value={this.state.bandName} />
           </Form.Field>
 
           {/* ///DROPDOWN///  */}
-          <DropDownMusic callBack={this.getValueFromDropDownMusicStyle} />
-          <DropDownLookingFor callBack={this.getValueFromDropDownLookingFor} />
+          <DropDownMusic
+            callBack={this.getValueFromDropDownMusicStyle}
+            value={this.state.musicStyle}
+          />
+          <DropDownLookingFor
+            callBack={this.getValueFromDropDownLookingFor}
+            value={this.state.lookingFor}
+          />
           {/* ///DROPDOWN/// */}
 
           <Form.Field>
             <label> Describe your band </label>
-            <input name="description" type="string" />
+            <input
+              name="description"
+              type="string"
+              value={this.state.description}
+            />
           </Form.Field>
 
           <Form.Field>
             <label> Mail on which interested members can join you</label>
-            <input name="email" type="string" />
+            <input name="email" type="string" value={this.state.email} />
           </Form.Field>
 
           <Form.Field>
             <label> Does your band already have a site or a youtube ?</label>
-            <input name="link" type="string" />
+            <input name="link" type="string" value={this.state.link} />
           </Form.Field>
 
           <Button type="submit">LETS GO</Button>

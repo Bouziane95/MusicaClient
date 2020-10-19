@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import apiHandler from "../api/apiHandler";
 import { Link } from "react-router-dom";
+import { Button } from "semantic-ui-react";
 
 export default class UserBands extends Component {
   state = {
@@ -22,6 +23,20 @@ export default class UserBands extends Component {
       });
   }
 
+  deleteBand = () => {
+    apiHandler
+      .deleteBand("/bands/" + this.props.match.params.id, this.state)
+      .then((apiRes) => {
+        console.log(apiRes.data)
+        this.props.history.push(
+          "/profile/" + this.props.match.params.id
+        )
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   render() {
     return (
       <div>
@@ -39,7 +54,8 @@ export default class UserBands extends Component {
             <h3>{band.musicStyle}</h3>
             <h4>{band.lookingFor}</h4>
             <h5>{band.location}</h5>
-            <Link to={`/profile/bands/${band._id}/edit`}> EDIT </Link>
+            <Link to={`/profile/${band._id}/bands/edit`}> Edit my band </Link>
+            <Button onClick={this.deleteBand}>Delete my band</Button>
           </div>
         ))}
       </div>

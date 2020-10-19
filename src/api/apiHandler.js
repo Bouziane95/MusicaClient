@@ -65,7 +65,12 @@ export default {
   },
 
   updateBand(endpoint, data) {
+    console.log(endpoint)
     return service.patch(endpoint, data);
+  },
+
+  deleteBand(endpoint, data) {
+    return service.delete(endpoint, data);
   },
 
   getAllUsers(endpoint) {

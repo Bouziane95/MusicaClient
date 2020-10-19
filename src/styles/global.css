@@ -6,8 +6,10 @@
   box-sizing: border-box;
 }
 
-
-
+/* ///CHAQUE ELEMENT DE LA NAVBAR/// */
+/* .ui.menu .item {
+  background-color: red;
+} */
 
 input[type=text], select, textarea {
   width: 100%;
