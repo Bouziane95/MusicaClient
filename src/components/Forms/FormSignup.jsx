@@ -16,7 +16,7 @@ class FormSignup extends Component {
     password: "",
     firstName: "",
     lastName: "",
-    age: 0,
+    age: "",
     profilePicture: "https://thevoicefinder.com/wp-content/themes/the-voice-finder/images/default-img.png",
     description: "",
     lookingFor: [],
