@@ -7,6 +7,7 @@ import DropDownLookingFor from '../Forms/DropDownLookingFor'
 import DropDownInstruments from "../Forms/DropDownInstruments"
 import {buildFormData} from "../../Utils"
 import AutoComplete from "../../pages/AutoComplete"
+import "../../styles/signup.css"
 
 class FormSignup extends Component {
   static contextType = UserContext;
@@ -69,7 +70,9 @@ class FormSignup extends Component {
 
   render() {
     return (
-    <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+    <div className="signupDiv">
+    <h1>Sign up</h1>
+      <Form className="signupForm" onChange={this.handleChange} onSubmit={this.handleSubmit}>
       <Form.Field>
         <label htmlFor="profilePicture">Profile Picture</label>
         <input type="file" id="profilePicture" name="profilePicture" />
@@ -115,9 +118,11 @@ class FormSignup extends Component {
       <br/>
       <DropDownInstruments value={this.state.instrumentsPlayed} callBack = {this.getValueFromDropDownInstruments}/>
       <br/>
-        
-      <Button type="submit" value="Submit">Submit</Button>
+
+      <Button type="submit" value="Submit" color='yellow'>Submit</Button>
     </Form>
+    </div>
+    
     );
   }
 }

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-
+import { Button } from 'semantic-ui-react'
 import { UserContext } from "../Auth/UserContext";
 import { withRouter } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
+import "../../styles/signin.css";
 
 class FormSignin extends Component {
   static contextType = UserContext;
@@ -43,13 +44,18 @@ class FormSignin extends Component {
 
   render() {
     return (
-      <form className="hey" onChange={this.handleChange} onSubmit={this.handleSubmit}>
+      
+      <div className="signinDiv">
+      <h1>Sign in</h1>
+      <form className="signinForm" onChange={this.handleChange} onSubmit={this.handleSubmit}>
         <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email" />
+        <input type="email" placeholder="mymail@mail.fr" id="email" name="email" />
         <label htmlFor="password">Password</label>
-        <input type="password" id="password" name="password" />
-        <button>Submit</button>
+        <input type="password" placeholder="password" id="password" name="password" />
+        <Button color='yellow'>Submit</Button>
       </form>
+      </div>
+      
     );
   }
 }

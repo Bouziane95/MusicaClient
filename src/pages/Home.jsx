@@ -42,19 +42,13 @@ class Home extends React.Component {
                 copyArray.splice(indexArr, 1)
             }
         }
-
-      
             return  copyArray.sort((a,b) => {
                 return this.locationDistance(this.props.context.user.location[0],this.props.context.user.location[1], a.location[0], a.location[1], "K") - this.locationDistance(this.props.context.user.location[0],this.props.context.user.location[1], b.location[0], b.location[1], "K")
                     })
-      
-
-      
     }
 
     componentDidMount(){
         apiHandler.getAllUsers("/users").then((apiRes) => {
-            console.log(apiRes)
             this.setState({
                 users: apiRes.data,
             });
@@ -70,7 +64,6 @@ class Home extends React.Component {
 
 
   render() {
-   
         return (
             <div>
                 <h1>I'm the user page</h1>

@@ -3,6 +3,7 @@ import {withRouter} from "react-router-dom";
 import apiHandler from ".././api/apiHandler"
 import {Button, Card, Icon, Image} from "semantic-ui-react"
 import { withUser } from '../components/Auth/withUser';
+import "../styles/profileRender.css"
 
 class ProfileRender extends Component {
     
@@ -36,6 +37,10 @@ class ProfileRender extends Component {
         })      
     }
 
+    redirectEdit = () =>{
+        this.props.history.push("/profile/" + this.props.match.params.id + "/edit")
+    }
+
     deleteAccount = () =>{
         const { context } = this.props;
 
@@ -57,8 +62,9 @@ class ProfileRender extends Component {
     render() {
         return (
             <div>
-                <h1>My Profile</h1>
-                <Card>
+            <div className="profileDiv">
+            <div className = "profileCard">
+            <Card>
                     <Image src = {this.state.profilePicture} alt= {this.state.firstName} wrapped ui = {false} />
                     <Card.Content>
                         <Card.Header>{this.state.firstName}</Card.Header>
@@ -76,8 +82,16 @@ class ProfileRender extends Component {
                     </p>
                     </Card.Content>
                 </Card>
-                <Button onClick={this.deleteAccount}>Delete my account</Button>
+            </div>    
             </div>
+            
+            <div className="buttonsEditDelete">
+                <Button onClick={this.redirectEdit}>Edit my account</Button>
+                <Button color= "red" onClick={this.deleteAccount}>Delete my account</Button>
+            </div>
+
+            </div>
+            
         )
     }
 }

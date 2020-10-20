@@ -1,0 +1,18 @@
+.profileDiv{
+   display: flex;
+   justify-content: center;
+   align-content: center;
+}
+
+.buttonsEditDelete{
+    text-align: center;
+    margin-top: 2%;
+}
+
+.profileCard{
+    width: 25%;
+    margin-top: 10%;
+    border: 2px solid grey;
+    border-radius: 2%;
+    box-shadow: 12px 12px 10px 1px rgba(255, 166, 43, .2);
+}

@@ -7,6 +7,7 @@ import DropDownLookingFor from "../Forms/DropDownLookingFor"
 import DropDownInstruments from "../Forms/DropDownInstruments"
 import {buildFormData} from "../../Utils"
 import UploadWidget from "../../uploadWidget";
+import "../../styles/formEdit.css"
 
 class FormEdit extends Component {
     static contextType = UserContext;
@@ -83,10 +84,10 @@ class FormEdit extends Component {
     render() {
 
         if(!this.context.user) return <div>Loading</div>
-
-
-        return (  
-        <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+        
+        return ( 
+        <div className= "editDiv">
+        <Form className="editForm" onChange={this.handleChange} onSubmit={this.handleSubmit}>
             <Form.Field>
                 <UploadWidget onFileSelect={this.handleFileSelect} name = "profilePicture" id ="profilePicture">
                     Upload Image
@@ -119,6 +120,7 @@ class FormEdit extends Component {
             <br/>
             <Button type="submit" value="Submit">Submit</Button>
         </Form>
+        </div>
         )
     }
 }

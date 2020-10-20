@@ -1,0 +1,15 @@
+.signinForm{
+    width: 40%;
+    text-align: center;
+    box-shadow: 12px 12px 10px 1px rgba(255, 166, 43, .2);
+    border: 1px solid grey;
+    padding: 20px;
+    border-radius: 2%;
+  }
+  
+  .signinDiv{
+    display: flex;
+    flex-direction: column;
+    margin-left: 37%;
+    margin-top: 13%;
+  }
