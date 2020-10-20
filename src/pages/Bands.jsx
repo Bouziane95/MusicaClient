@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import apiHandler from "../api/apiHandler";
 import { Link } from "react-router-dom";
-
+import { Card, Icon, Image } from "semantic-ui-react";
 
 export default class Bands extends Component {
   state = {
@@ -21,29 +21,40 @@ export default class Bands extends Component {
   }
 
   render() {
-
     console.log(this.state.bands);
     return (
       <div>
-        <h1> BANDS SECTION</h1>
+        <h1 className="centered-title"> BANDS </h1>
         <Link to={`/bands/add`}>ADD BAND</Link>
-        {this.state.bands.map((band) => (
-          <div>
-            <img
-              className="bandPic"
-              src={band.bandPicture}
-              alt="bandPic"
-            />
-            <h2>{band.bandBoss_id.firstName} {band.bandBoss_id.lastName}</h2>
-
-            <Link key={band.bandName} to={`/bands/${band._id}`}>
-              {band.bandName}
-            </Link>
-            <h3>{band.musicStyle}</h3>
-            <h4>{band.lookingFor}</h4>
-            <h5>{band.location}</h5>
-          </div>
-        ))}
+        <Card.Group>
+          {this.state.bands.map((band) => {
+            return (
+              <Link key={band._id} to={`/bands/${band._id}`}>
+                <Card>
+                  <Image
+                    className="bandPic"
+                    src={band.bandPicture}
+                    alt="bandPic"
+                    wrapped
+                    ui={false}
+                  />
+                  <Card.Content>
+                    <Card.Header>{band.bandName}</Card.Header>
+                    <Card.Meta>
+                      {" "}
+                      Created by {band.bandBoss_id.firstName}{" "}
+                      {band.bandBoss_id.lastName}
+                    </Card.Meta>
+                    
+                    <p>The band likes to play: {band.musicStyle}</p>
+                    <h4>The band is looking for: {band.lookingFor}</h4>
+                    <h5>{band.location}</h5>
+                  </Card.Content>
+                </Card>
+              </Link>
+            );
+          })}
+        </Card.Group>
       </div>
     );
   }
