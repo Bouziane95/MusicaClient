@@ -1,0 +1,15 @@
+.addBandDiv{
+    display: flex;
+    flex-direction: column;
+    margin-left: 22%;
+    margin-top: 10%;
+}
+
+.addBandForm{
+    width: 70%;
+    text-align: center;
+    border: 1px solid grey;
+    padding: 20px;
+    border-radius: 2%;
+    box-shadow: 12px 12px 10px 1px rgba(255, 166, 43, .2);
+}

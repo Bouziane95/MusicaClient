@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import apiHandler from "../api/apiHandler";
 import { Link } from "react-router-dom";
-import { Card, Icon, Image } from "semantic-ui-react";
+import { Card, Image, Button } from "semantic-ui-react";
 
 export default class Bands extends Component {
   state = {
@@ -20,12 +20,16 @@ export default class Bands extends Component {
       });
   }
 
+  redirectAddBand = () => {
+    this.props.history.push("/bands/add")
+  }
+
   render() {
     console.log(this.state.bands);
     return (
       <div>
         <h1 className="centered-title"> BANDS </h1>
-        <Link to={`/bands/add`}>ADD BAND</Link>
+        <Button color="yellow" onClick={this.redirectAddBand}>ADD BAND</Button>
         <Card.Group>
           {this.state.bands.map((band) => {
             return (

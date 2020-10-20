@@ -5,6 +5,7 @@ import DropDownMusic from "../components/Forms/DropDownMusic";
 import DropDownLookingFor from "../components/Forms/DropDownLookingFor";
 import { buildFormData } from "../Utils";
 import UploadWidget from "../uploadWidget";
+import "../styles/editBand.css"
 
 export default class UserBandsEdit extends Component {
   state = {
@@ -82,10 +83,10 @@ export default class UserBandsEdit extends Component {
 
   render() {
     return (
-      <div>
+      <div className="editBandDiv">
         <h1>Edit your band</h1>
 
-        <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+        <Form className="editBandForm" onChange={this.handleChange} onSubmit={this.handleSubmit}>
           <Form.Field>
             <UploadWidget
               onFileSelect={this.handleFileSelect}
@@ -131,7 +132,7 @@ export default class UserBandsEdit extends Component {
             <input name="link" type="string" value={this.state.link} />
           </Form.Field>
 
-          <Button type="submit">LETS GO</Button>
+          <Button color="yellow" type="submit">LETS GO</Button>
         </Form>
       </div>
     );

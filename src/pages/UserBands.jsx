@@ -35,6 +35,10 @@ export default class UserBands extends Component {
       });
   };
 
+  redirectEditBand = () => {
+    this.props.history.push("/profile/"+ this.state.bands._id + "/bands/edit")
+  }
+
   render() {
     return (
       <div>
@@ -52,8 +56,8 @@ export default class UserBands extends Component {
             <h3>{band.musicStyle}</h3>
             <h4>{band.lookingFor}</h4>
             <h5>{band.location}</h5>
-            <Link to={`/profile/${band._id}/bands/edit`}> Edit my band </Link>
-            <Button onClick={() => this.deleteBand(band._id)}>Delete my band</Button>
+            <Button onClick={this.redirectEditBand}> Edit my band </Button>
+            <Button color="red" onClick={() => this.deleteBand(band._id)}>Delete my band</Button>
           </div>
         ))}
       </div>

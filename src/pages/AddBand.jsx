@@ -5,6 +5,7 @@ import DropDownMusic from "../components/Forms/DropDownMusic";
 import DropDownLookingFor from "../components/Forms/DropDownLookingFor";
 import {buildFormData} from "../Utils"
 import AutoComplete from "../pages/AutoComplete"
+import "../styles/addBand.css"
 
 export default class AddBand extends Component {
   state = {
@@ -63,10 +64,9 @@ export default class AddBand extends Component {
 
   render() {
     return (
-      <div>
+      <div className="addBandDiv">
         <h1> ADD A BAND</h1>
-
-        <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+        <Form className="addBandForm" onChange={this.handleChange} onSubmit={this.handleSubmit}>
           <Form.Field>
             <label>Band Picture</label>
             <input name="bandPicture" type="file"/>
@@ -102,7 +102,7 @@ export default class AddBand extends Component {
             <input name="link" type="string" />
           </Form.Field>
 
-          <Button type="submit">LETS GO</Button>
+          <Button color= "yellow" type="submit">LETS GO</Button>
         </Form>
       </div>
     );
