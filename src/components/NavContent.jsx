@@ -21,15 +21,23 @@ const NavContent = (props) => {
   }
 
   return (
+
+
     <Menu icon="labeled">
+
+<Menu.Item name="Home">
+        <Icon name="home" />
+        <NavLink exact to="/">
+          Home
+        </NavLink>
+      </Menu.Item>
+
       <Menu.Item name="Bands">
         <Icon name="music" />
         <NavLink exact to="/bands">
           Bands
         </NavLink>
       </Menu.Item>
-
-    
 
       {context.isLoggedIn && (
         <React.Fragment>
@@ -65,7 +73,7 @@ const NavContent = (props) => {
           <React.Fragment>
           <Menu.Item name="Sign Up">
         <Icon name="volume down" />
-        <NavLink to="/signup">Create account</NavLink>
+        <NavLink className="effect-underline" to="/signup">Create account</NavLink>
       </Menu.Item>
 
       <Menu.Item name="Sign In">

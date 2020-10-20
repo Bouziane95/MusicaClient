@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
+import MusicaHead from "./components/MusicaHead";
 import Profile from "./pages/Profile";
 import Bands from "./pages/Bands";
 import BandPage from "./pages/BandPage";
@@ -21,6 +22,7 @@ import 'semantic-ui-css/semantic.min.css'
 function App() {
   return (
     <div className="App">
+    <MusicaHead/>
     <NavContent/>
       {/* <NavMain /> */}
       <Switch>

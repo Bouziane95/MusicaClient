@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
 
 * {
   margin: 0;
@@ -6,12 +7,62 @@
   box-sizing: border-box;
 }
 
+.centered-title {
+  padding-top: 80px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.web-title {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+  font-family: "Shrikhand", cursive;
+  font-size: 45px;
+  background-color: rgb(255, 166, 43);
+}
+
 /* ///CHAQUE ELEMENT DE LA NAVBAR/// */
 /* .ui.menu .item {
   background-color: red;
 } */
 
-input[type=text], select, textarea {
+.ui.menu {
+
+  margin-top: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: stretch;
+  position: fixed;
+  z-index: 1;
+}
+
+.ui.cards {
+  margin-top: 60px;
+  margin-bottom: 20px;
+  margin-right: 50px;
+  margin-left: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+  grid-auto-rows: minmax(100px, auto);
+  /* flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
+  align-content: stretch; */
+}
+
+input[type="text"],
+select,
+textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -22,7 +73,9 @@ input[type=text], select, textarea {
   resize: vertical;
 }
 
-input[type=email], select, textarea {
+input[type="email"],
+select,
+textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -33,7 +86,9 @@ input[type=email], select, textarea {
   resize: vertical;
 }
 
-input[type=password], select, textarea {
+input[type="password"],
+select,
+textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -44,10 +99,8 @@ input[type=password], select, textarea {
   resize: vertical;
 }
 
-
-
-input[type=submit] {
-  background-color: #4CAF50;
+input[type="submit"] {
+  background-color: #4caf50;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -55,7 +108,9 @@ input[type=submit] {
   cursor: pointer;
 }
 
-input[type=number], select, textarea {
+input[type="number"],
+select,
+textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -65,7 +120,9 @@ input[type=number], select, textarea {
   margin-bottom: 16px;
   resize: vertical;
 }
-input[type=file], select, textarea {
+input[type="file"],
+select,
+textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -76,7 +133,7 @@ input[type=file], select, textarea {
   resize: vertical;
 }
 
-input[type=submit]:hover {
+input[type="submit"]:hover {
   background-color: #45a049;
 }
 
@@ -86,12 +143,9 @@ input[type=submit]:hover {
   padding: 20px;
 }
 
-
 html {
   font-family: "Manrope", sans-serif;
 }
-
-
 
 a {
   text-decoration: none;
