@@ -5,10 +5,11 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 import {withUser} from "../components/Auth/withUser"
 
 class Home extends React.Component {
+
   state = {
-    users: [],
-    selectedUser: null,
-  };
+        users: [],
+        selectedUser: null,
+    };
 
     locationDistance(lat1, lon1, lat2, lon2, unit){
         if ((lat1 === lat2) && (lon1 === lon2)) {
@@ -30,9 +31,9 @@ class Home extends React.Component {
             return dist;
         }
     }
-  
 
     rankLocation(){
+        if(!this.props.context.user) return this.state.users;
         const copyArray = [...this.state.users]
 
         for (let i= 0; i< copyArray.length; i++){
@@ -42,13 +43,18 @@ class Home extends React.Component {
             }
         }
 
-       return  copyArray.sort((a,b) => {
-    return this.locationDistance(this.props.context.user.location[0],this.props.context.user.location[1], a.location[0], a.location[1], "K") - this.locationDistance(this.props.context.user.location[0],this.props.context.user.location[1], b.location[0], b.location[1], "K")
-        })
-  }
+      
+            return  copyArray.sort((a,b) => {
+                return this.locationDistance(this.props.context.user.location[0],this.props.context.user.location[1], a.location[0], a.location[1], "K") - this.locationDistance(this.props.context.user.location[0],this.props.context.user.location[1], b.location[0], b.location[1], "K")
+                    })
+      
 
-   componentDidMount(){
+      
+    }
+
+    componentDidMount(){
         apiHandler.getAllUsers("/users").then((apiRes) => {
+            console.log(apiRes)
             this.setState({
                 users: apiRes.data,
             });
@@ -56,51 +62,48 @@ class Home extends React.Component {
         .catch((apiErr) => {
             console.log(apiErr);
         });
-    
+    }
 
-  handleClick = (index) => {
-    this.setState({ selectedUser: index });
-  };
+    handleClick = (index) => {
+        this.setState({selectedUser : index});
+    }
 
   render() {
-
-    if(!this.props.context.user) return null;
-
-    return (
-      <div>
-        <h1 className="centered-title">Users</h1>
-        <Card.Group>
-          {this.state.users.map((user) => {
-            return (
-              <Link key={user._id} to={`/users/${user._id}`}>
-                <Card>
-                  <Image
-                    src={user.profilePicture}
-                    alt={user.firstName}
-                    wrapped
-                    ui={false}
-                  />
-                  <Card.Content>
-                    <Card.Header>{user.firstName}</Card.Header>
-                    <Card.Meta>
-                      <span>{user.age} ans</span>
-                    </Card.Meta>
-                    <Card.Description>{user.description}</Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                      <Icon name="music" />
-                      {user.instrumentsPlayed}
-                    
-                  </Card.Content>
-                </Card>
-              </Link>
-            );
-          })}
-        </Card.Group>
-      </div>
-    );
-  }
-}
+   
+        return (
+            <div>
+                <h1>I'm the user page</h1>
+                        <Card.Group>
+                {this.rankLocation().map((user) => {
+                    return (
+                        <Link
+                        key = {user._id}
+                        to={`/users/${user._id}`}>
+                        <Card>
+                            <Image src={user.profilePicture} alt={user.firstName} wrapped ui={false} />
+                        <Card.Content>
+                        <Card.Header>{user.firstName}</Card.Header>
+                        <Card.Meta>
+                         <span>{user.age} ans</span>
+                        </Card.Meta>
+                         <Card.Description>
+                        {user.description}
+                        </Card.Description>
+                        </Card.Content>
+                        <Card.Content extra>
+                    <p>
+                        <Icon name='music' />
+                        {user.instrumentsPlayed}
+                    </p>
+                    </Card.Content>
+                 </Card>
+                 </Link>
+                    )
+                })}
+                 </Card.Group>
+            </div>
+        )
+    }
 }
 
 export default withUser(Home);
