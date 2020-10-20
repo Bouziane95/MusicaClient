@@ -6,10 +6,13 @@
   box-sizing: border-box;
 }
 
-/* ///CHAQUE ELEMENT DE LA NAVBAR/// */
-/* .ui.menu .item {
-  background-color: red;
-} */
+.hey{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  text-align: center;
+  
+}
 
 input[type=text], select, textarea {
   width: 100%;
