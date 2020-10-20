@@ -47,16 +47,16 @@ class Home extends React.Component {
         })
   }
 
-  componentDidMount(){
-    apiHandler.getAllUsers("/users").then((apiRes) => {
-        this.setState({
-            users: apiRes.data,
+   componentDidMount(){
+        apiHandler.getAllUsers("/users").then((apiRes) => {
+            this.setState({
+                users: apiRes.data,
+            });
+        })
+        .catch((apiErr) => {
+            console.log(apiErr);
         });
-    })
-    .catch((apiErr) => {
-        console.log(apiErr);
-    });
-}
+    
 
   handleClick = (index) => {
     this.setState({ selectedUser: index });
@@ -101,6 +101,6 @@ class Home extends React.Component {
     );
   }
 }
-
+}
 
 export default withUser(Home);
