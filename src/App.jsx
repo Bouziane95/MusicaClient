@@ -1,11 +1,11 @@
  import React from "react";
 import { Switch, Route } from "react-router-dom";
-import NavMain from "./components/NavMain";
+// import NavMain from "./components/NavMain";
 import NavContent from "./components/NavContent";
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
-import ProtectedRoute from "./components/ProtectedRoute";
+// import ProtectedRoute from "./components/ProtectedRoute";
 import MusicaHead from "./components/MusicaHead";
 import Profile from "./pages/Profile";
 import Bands from "./pages/Bands";

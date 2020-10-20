@@ -23,6 +23,7 @@ class FormSignup extends Component {
     instrumentsPlayed:[],
     location:[],
     locationAddress:"",
+    distance: "",
   };
 
   getValueFromDropDown = (data) => {

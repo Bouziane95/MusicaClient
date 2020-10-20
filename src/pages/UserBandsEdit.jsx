@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import {withRouter} from "react-router-dom";
 import apiHandler from "../api/apiHandler";
 import { Button, Form } from "semantic-ui-react";
 import DropDownMusic from "../components/Forms/DropDownMusic";

@@ -70,10 +70,10 @@ class ProfileRender extends Component {
                         </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
-                    <a>
+                    <p>
                         <Icon name='music' />
                         {this.state.instrumentsPlayed}
-                    </a>
+                    </p>
                     </Card.Content>
                 </Card>
                 <Button onClick={this.deleteAccount}>Delete my account</Button>
