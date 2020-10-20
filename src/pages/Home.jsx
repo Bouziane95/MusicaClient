@@ -33,6 +33,7 @@ class Home extends React.Component {
     }
 
     rankLocation(){
+        if(!this.props.context.user) return this.state.users;
         const copyArray = [...this.state.users]
 
         for (let i= 0; i< copyArray.length; i++){
@@ -42,13 +43,18 @@ class Home extends React.Component {
             }
         }
 
-       return  copyArray.sort((a,b) => {
-    return this.locationDistance(this.props.context.user.location[0],this.props.context.user.location[1], a.location[0], a.location[1], "K") - this.locationDistance(this.props.context.user.location[0],this.props.context.user.location[1], b.location[0], b.location[1], "K")
-        })
+      
+            return  copyArray.sort((a,b) => {
+                return this.locationDistance(this.props.context.user.location[0],this.props.context.user.location[1], a.location[0], a.location[1], "K") - this.locationDistance(this.props.context.user.location[0],this.props.context.user.location[1], b.location[0], b.location[1], "K")
+                    })
+      
+
+      
     }
 
     componentDidMount(){
         apiHandler.getAllUsers("/users").then((apiRes) => {
+            console.log(apiRes)
             this.setState({
                 users: apiRes.data,
             });
@@ -64,7 +70,7 @@ class Home extends React.Component {
 
 
   render() {
-      if(!this.props.context.user) return null;
+   
         return (
             <div>
                 <h1>I'm the user page</h1>
