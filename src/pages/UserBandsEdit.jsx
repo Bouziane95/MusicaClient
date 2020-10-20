@@ -14,6 +14,7 @@ export default class UserBandsEdit extends Component {
     lookingFor: [],
     description: "",
     email: "",
+    bandLocation: "",
     link: "",
   };
 
@@ -28,6 +29,7 @@ export default class UserBandsEdit extends Component {
           lookingFor: apiResponse.data.lookingFor,
           description: apiResponse.data.description,
           email: apiResponse.data.email,
+          bandLocation: apiResponse.data.bandLocation,
           link: apiResponse.data.link,
         });
         console.log(this.state.bandName);
@@ -51,7 +53,9 @@ export default class UserBandsEdit extends Component {
     apiHandler
       .updateBand("/bands/" + this.props.match.params.id, fd)
       .then((apiResponse) => {
-        this.props.history.push("/profile/"+ this.props.match.params.id + "/bands")
+        this.props.history.push(
+          "/profile/" + this.props.match.params.id + "/bands"
+        );
       })
       .catch((err) => {
         console.log(err);
@@ -66,6 +70,14 @@ export default class UserBandsEdit extends Component {
 
   handleFileSelect = ({ tmpUrl, file }) => {
     this.setState({ bandPicture: file });
+  };
+
+  getValueFromDropDownMusicStyle = (data) => {
+    this.setState({ musicStyle: data.value });
+  };
+
+  getValueFromDropDownLookingFor = (data) => {
+    this.setState({ lookingFor: data.value });
   };
 
   render() {

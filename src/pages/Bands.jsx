@@ -45,10 +45,42 @@ export default class Bands extends Component {
                       Created by {band.bandBoss_id.firstName}{" "}
                       {band.bandBoss_id.lastName}
                     </Card.Meta>
-                    
-                    <p>The band likes to play: {band.musicStyle}</p>
-                    <h4>The band is looking for: {band.lookingFor}</h4>
-                    <h5>{band.location}</h5>
+
+                    <hr className="orange-line"></hr>
+                    <br></br>
+                    <h4>This band likes to play :</h4>
+
+                    {band.musicStyle.map((genre) => {
+                      return (
+                        <div>
+                          <span>- </span>
+                          <span>{genre}</span>
+                        </div>
+                      );
+                    })}
+
+                    <br></br>
+                    <hr className="orange-line"></hr>
+
+                    <br></br>
+                    <h4>This band is looking for a :</h4>
+
+                    {band.lookingFor.map((instrument) => {
+                      return (
+                        <div>
+                          <span>- </span>
+                          <span>{instrument}</span>
+                        </div>
+                      );
+                    })}
+                    <br></br>
+                    <hr className="orange-line"></hr>
+                    <br></br>
+                    <h4>This band is located in :</h4>
+                    <span>{band.bandLocation}</span>
+                    <br></br>
+
+
                   </Card.Content>
                 </Card>
               </Link>

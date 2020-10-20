@@ -4,6 +4,7 @@ import { Button, Form} from "semantic-ui-react";
 import DropDownMusic from "../components/Forms/DropDownMusic";
 import DropDownLookingFor from "../components/Forms/DropDownLookingFor";
 import {buildFormData} from "../Utils"
+import AutoComplete from "../pages/AutoComplete"
 
 export default class AddBand extends Component {
   state = {
@@ -13,6 +14,7 @@ export default class AddBand extends Component {
     musicStyle: [],
     lookingFor: [],
     description: "",
+    bandLocation: "",
     email: "",
     link: "",
   };
@@ -38,10 +40,16 @@ export default class AddBand extends Component {
   handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.type === "file" ? event.target.files[0] : event.target.value;
-    console.log(name, value)
+    // console.log(name, value)
     this.setState({ [name]: value });
   };
 
+  handlePlace = (place) => {
+    const bandlocationAddress = place.place_name;
+    console.log("handle place ici")
+    console.log(bandlocationAddress)
+    this.setState({ bandLocation: bandlocationAddress });
+  }
 
   getValueFromDropDownMusicStyle = (data) => {
     
@@ -78,6 +86,11 @@ export default class AddBand extends Component {
             <label> Describe your band </label>
             <input name="description" type="string" />
           </Form.Field>
+
+          <Form.Field>
+        <label htmlFor="bandlocation">Where is your band based ?</label>
+        <AutoComplete name="bandLocation" id ="bandlocation" onSelect= {this.handlePlace}/>
+      </Form.Field>
 
           <Form.Field>
             <label> Mail on which interested members can join you</label>

@@ -69,8 +69,8 @@ export default {
     return service.patch(endpoint, data);
   },
 
-  deleteBand(endpoint, data) {
-    return service.delete(endpoint, data);
+  deleteBand(endpoint) {
+    return service.delete(endpoint);
   },
 
   getAllUsers(endpoint) {

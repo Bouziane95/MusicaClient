@@ -23,14 +23,12 @@ export default class UserBands extends Component {
       });
   }
 
-  deleteBand = () => {
+  deleteBand = (bandId) => {
     apiHandler
-      .deleteBand("/bands/" + this.props.match.params.id, this.state)
+      .deleteBand("/bands/" + bandId)
       .then((apiRes) => {
-        console.log(apiRes.data)
-        this.props.history.push(
-          "/profile/" + this.props.match.params.id
-        )
+        console.log(apiRes.data);
+        this.props.history.push("/profile/" + this.props.match.params.id);
       })
       .catch((err) => {
         console.log(err);
@@ -55,7 +53,7 @@ export default class UserBands extends Component {
             <h4>{band.lookingFor}</h4>
             <h5>{band.location}</h5>
             <Link to={`/profile/${band._id}/bands/edit`}> Edit my band </Link>
-            <Button onClick={this.deleteBand}>Delete my band</Button>
+            <Button onClick={() => this.deleteBand(band._id)}>Delete my band</Button>
           </div>
         ))}
       </div>

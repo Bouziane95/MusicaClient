@@ -15,6 +15,12 @@
   margin-top: 50%;
   
 }
+
+.orange-line {
+  color: rgb(255, 183, 3);
+  border: 1px solid rgb(255, 183, 3);
+}
+
 .centered-title {
   padding-top: 80px;
   display: flex;
@@ -32,6 +38,7 @@
   font-family: "Shrikhand", cursive;
   font-size: 45px;
   background-color: rgb(255, 166, 43);
+  /* border-bottom: 1px solid black; */
 }
 
 /* ///CHAQUE ELEMENT DE LA NAVBAR/// */
