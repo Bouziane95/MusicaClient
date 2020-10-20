@@ -30,7 +30,7 @@ class Home extends React.Component {
             return dist;
         }
     }
-  }
+  
 
     rankLocation(){
         const copyArray = [...this.state.users]
@@ -45,23 +45,18 @@ class Home extends React.Component {
        return  copyArray.sort((a,b) => {
     return this.locationDistance(this.props.context.user.location[0],this.props.context.user.location[1], a.location[0], a.location[1], "K") - this.locationDistance(this.props.context.user.location[0],this.props.context.user.location[1], b.location[0], b.location[1], "K")
         })
-    }
   }
 
-    componentDidMount(){
-        apiHandler.getAllUsers("/users").then((apiRes) => {
-            this.setState({
-                users: apiRes.data,
-            });
-        })
-        .catch((apiErr) => {
-            console.log(apiErr);
+  componentDidMount(){
+    apiHandler.getAllUsers("/users").then((apiRes) => {
+        this.setState({
+            users: apiRes.data,
         });
-      })
-      .catch((apiErr) => {
+    })
+    .catch((apiErr) => {
         console.log(apiErr);
-      });
-  }
+    });
+}
 
   handleClick = (index) => {
     this.setState({ selectedUser: index });
@@ -106,5 +101,6 @@ class Home extends React.Component {
     );
   }
 }
+
 
 export default withUser(Home);
