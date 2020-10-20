@@ -2,7 +2,7 @@ import React from "react";
 import apiHandler from "../api/apiHandler";
 import {Link} from "react-router-dom";
 import { Card, Icon, Image } from 'semantic-ui-react'
-
+import {withUser} from "../components/Auth/withUser"
 
 class Home extends React.Component {
 
@@ -28,20 +28,24 @@ class Home extends React.Component {
             dist = dist * 180/Math.PI;
             dist = dist * 60 * 1.1515;
             if (unit==="K") { dist = dist * 1.609344 }
-            if (unit==="N") { dist = dist * 0.8684 }
-            console.log(dist)
             return dist;
         }
     }
 
     rankLocation(){
-        for(let i= 0; i<this.state.users.length; i++){
-            this.locationDistance(this.state.users[i].location[0], this.state.users[i].location[1], this.state.users[i].location[0], this.state.users[i].location[1], "K")
+        const copyArray = [...this.state.users]
+
+        for (let i= 0; i< copyArray.length; i++){
+            if (copyArray[i]._id === this.props.context.user._id){
+                const indexArr = copyArray.indexOf(copyArray[i])
+                copyArray.splice(indexArr, 1)
+            }
         }
 
+       return  copyArray.sort((a,b) => {
+    return this.locationDistance(this.props.context.user.location[0],this.props.context.user.location[1], a.location[0], a.location[1], "K") - this.locationDistance(this.props.context.user.location[0],this.props.context.user.location[1], b.location[0], b.location[1], "K")
+        })
     }
-
-
 
     componentDidMount(){
         apiHandler.getAllUsers("/users").then((apiRes) => {
@@ -60,13 +64,12 @@ class Home extends React.Component {
 
 
   render() {
-      console.log(this.state.users);
-      this.rankLocation();
+      if(!this.props.context.user) return null;
         return (
             <div>
                 <h1>I'm the user page</h1>
                         <Card.Group>
-                {this.state.users.map((user) => {
+                {this.rankLocation().map((user) => {
                     return (
                         <Link
                         key = {user._id}
@@ -83,10 +86,10 @@ class Home extends React.Component {
                         </Card.Description>
                         </Card.Content>
                         <Card.Content extra>
-                    <a>
+                    <p>
                         <Icon name='music' />
                         {user.instrumentsPlayed}
-                    </a>
+                    </p>
                     </Card.Content>
                  </Card>
                  </Link>
@@ -98,4 +101,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default withUser(Home);

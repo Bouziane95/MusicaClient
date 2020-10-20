@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import EditUser from "../pages/EditUser"
 
 const ProfileEdit = (props) => {

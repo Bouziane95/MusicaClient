@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Icon, Menu } from "semantic-ui-react";
+import React from "react";
+import { Button, Icon, Menu } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { withUser } from "../components/Auth/withUser";
@@ -7,7 +7,6 @@ import apiHandler from "../api/apiHandler";
 
 const NavContent = (props) => {
   const { context } = props;
-  console.log(context);
 
   function handleLogout() {
     apiHandler
@@ -55,7 +54,7 @@ const NavContent = (props) => {
             </Menu.Item> */}
             <Menu.Item name="LogOut">
             <Icon name="log out" />
-            <Link onClick={handleLogout}> Log Out</Link>
+            <p onClick={handleLogout}> Log Out</p>
           </Menu.Item>
 
         </React.Fragment>
