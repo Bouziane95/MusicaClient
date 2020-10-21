@@ -34,37 +34,54 @@ class Home extends React.Component {
     }
   }
 
-    rankLocation(){
-        if(!this.props.context.user) return this.state.users;
-        const copyArray = [...this.state.users]
+  rankLocation() {
+    if (!this.props.context.user) return this.state.users;
+    const copyArray = [...this.state.users];
 
-        for (let i= 0; i< copyArray.length; i++){
-            if (copyArray[i]._id === this.props.context.user._id){
-                const indexArr = copyArray.indexOf(copyArray[i])
-                copyArray.splice(indexArr, 1)
-            }
-        }
-            return  copyArray.sort((a,b) => {
-                return this.locationDistance(this.props.context.user.location[0],this.props.context.user.location[1], a.location[0], a.location[1], "K") - this.locationDistance(this.props.context.user.location[0],this.props.context.user.location[1], b.location[0], b.location[1], "K")
-                    })
+    for (let i = 0; i < copyArray.length; i++) {
+      if (copyArray[i]._id === this.props.context.user._id) {
+        const indexArr = copyArray.indexOf(copyArray[i]);
+        copyArray.splice(indexArr, 1);
+      }
     }
+    return copyArray.sort((a, b) => {
+      return (
+        this.locationDistance(
+          this.props.context.user.location[0],
+          this.props.context.user.location[1],
+          a.location[0],
+          a.location[1],
+          "K"
+        ) -
+        this.locationDistance(
+          this.props.context.user.location[0],
+          this.props.context.user.location[1],
+          b.location[0],
+          b.location[1],
+          "K"
+        )
+      );
+    });
+  }
 
-    componentDidMount(){
-        apiHandler.getAllUsers("/users").then((apiRes) => {
-            this.setState({
-                users: apiRes.data,
-            });
-        })
-        .catch((apiErr) => {
-            console.log(apiErr);
-        });
-    }
+  // componentDidMount() {
+  //   apiHandler
+  //     .getAllUsers("/users")
+  //     .then((apiRes) => {
+  //       this.setState({
+  //         users: apiRes.data,
+  //       });
+  //     })
+  //     .catch((apiErr) => {
+  //       console.log(apiErr);
+  //     });
+  // }
 
   componentDidMount() {
     apiHandler
       .getAllUsers("/users")
       .then((apiRes) => {
-        console.log(apiRes);
+        console.log(apiRes.data);
         this.setState({
           users: apiRes.data,
         });
@@ -79,31 +96,64 @@ class Home extends React.Component {
   };
 
   render() {
-        return (
-            <div>
-                <h1>I'm the user page</h1>
-                        <Card.Group>
-                {this.rankLocation().map((user) => {
-                    return (
-                        <Link
-                        key = {user._id}
-                        to={`/users/${user._id}`}>
-                        <Card>
-                            <Image src={user.profilePicture} alt={user.firstName} wrapped ui={false} />
-                        <Card.Content>
-                        <Card.Header>{user.firstName}</Card.Header>
-                        <Card.Meta>
-                         <span>{user.age} ans</span>
-                        </Card.Meta>
-                         <Card.Description>
-                        {user.description}
-                        </Card.Description>
-                        </Card.Content>
-                        <Card.Content extra>
-                    <p>
-                      <Icon name="music" />
-                      {user.instrumentsPlayed}
-                    </p>
+    console.log("LE STATE")
+    console.log(this.state)
+    return (
+      <div>
+        <h1 className="centered-title floating"> ♬ Users ♬</h1>
+        <Card.Group>
+          {this.rankLocation().map((user) => {
+            return (
+              <Link key={user._id} to={`/users/${user._id}`}>
+                <Card>
+                  <Image
+                    src={user.profilePicture}
+                    alt={user.firstName}
+                    wrapped
+                    ui={false}
+                  />
+                  <Card.Content>
+                    <Card.Header>
+                      {user.firstName} {user.lastName}{" "}
+                    </Card.Header>
+                    <Card.Meta>
+                      <span>{user.age} years old</span>
+                    </Card.Meta>
+                    <hr className="orange-line"></hr>
+                    <br></br>
+                    <h4>I am playing :</h4>
+                    {user.instrumentsPlayed.map((instrument) => {
+                      return (
+                        <div>
+                          <span>- </span>
+                          <span>{instrument}</span>
+                        </div>
+                      );
+                    })}
+
+                    <br></br>
+                    <hr className="orange-line"></hr>
+                    <br></br>
+                    <h4>I am looking for a :</h4>
+
+                    {user.lookingFor.map((seekingInstrument) => {
+                      return (
+                        <div>
+                          <span>- </span>
+                          <span>{seekingInstrument}</span>
+                        </div>
+                      );
+                    })}
+                    <br></br>
+                    <hr className="orange-line"></hr>
+                    <br></br>
+                    <h4>My favourite band:</h4>
+                    <p>{user.favouriteBand}</p>
+                    <br></br>
+                    <hr className="orange-line"></hr>
+                    <br></br>
+                    <h4>Located in:</h4>
+                    {user.locationAddress}
                   </Card.Content>
                 </Card>
               </Link>

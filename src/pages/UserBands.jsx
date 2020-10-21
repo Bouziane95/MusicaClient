@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import apiHandler from "../api/apiHandler";
 import { Link } from "react-router-dom";
-import { Button } from "semantic-ui-react";
+import { Button, Card, Icon, Image } from "semantic-ui-react";
+import { withUser } from "../components/Auth/withUser";
 
-export default class UserBands extends Component {
+class UserBands extends Component {
+
   state = {
     bands: [],
   };
 
   componentDidMount() {
-    console.log("i'm here");
-    console.log(this.props.match.params.id);
     apiHandler
       .getUserBands("/users/me/bands")
       .then((apiRes) => {
@@ -34,29 +34,95 @@ export default class UserBands extends Component {
         console.log(err);
       });
   };
-
   render() {
+    console.log(this.props.context.isLoggedIn);
     return (
       <div>
-        <h1> MY BANDS</h1>
-        {this.state.bands.map((band) => (
-          <div>
-            <img className="bandPic" src={band.bandPicture} alt="bandPic" />
-            <h2>
-              {band.bandBoss_id.firstName} {band.bandBoss_id.lastName}
-            </h2>
+        <h1 className="centered-title"> BANDS </h1>
 
-            <Link key={band.bandName} to={`/bands/${band._id}`}>
-              {band.bandName}
-            </Link>
-            <h3>{band.musicStyle}</h3>
-            <h4>{band.lookingFor}</h4>
-            <h5>{band.location}</h5>
-            <Link to={`/profile/${band._id}/bands/edit`}> Edit my band </Link>
-            <Button onClick={() => this.deleteBand(band._id)}>Delete my band</Button>
-          </div>
-        ))}
+        {this.props.context.isLoggedIn && (
+        <Link to={`/bands/add`}>ADD BAND</Link>
+        )}
+
+        <Card.Group>
+          {this.state.bands.map((band) => {
+            return (
+              <Link key={band._id} to={`/bands/${band._id}`}>
+                <Card>
+                  <Image
+                    className="bandPic"
+                    src={band.bandPicture}
+                    alt="bandPic"
+                    wrapped
+                    ui={false}
+                  />
+                  <Card.Content>
+                    <Card.Header>{band.bandName}</Card.Header>
+                    <Card.Meta>
+                      {" "}
+                      Created by {band.bandBoss_id.firstName}{" "}
+                      {band.bandBoss_id.lastName}
+                    </Card.Meta>
+
+                    <hr className="orange-line"></hr>
+                    <br></br>
+                    <h4>This band likes to play :</h4>
+
+                    {band.musicStyle.map((genre) => {
+                      return (
+                        <div>
+                          <span>- </span>
+                          <span>{genre}</span>
+                        </div>
+                      );
+                    })}
+
+                    <br></br>
+                    <hr className="orange-line"></hr>
+
+                    <br></br>
+                    <h4>This band is looking for a :</h4>
+
+                    {band.lookingFor.map((instrument) => {
+                      return (
+                        <div>
+                          <span>- </span>
+                          <span>{instrument}</span>
+                        </div>
+                      );
+                    })}
+                    <br></br>
+                    <hr className="orange-line"></hr>
+                    <br></br>
+                    <h4>This band is located in :</h4>
+                    <span>{band.bandLocation}</span>
+                    <br></br>
+                    <br></br>
+
+                    <hr className="orange-line"></hr>
+                    <br></br>
+                    <Button>
+                      <Link to={`/profile/${band._id}/bands/edit`}>
+                        {" "}
+                        Edit my band{" "}
+                      </Link>
+                    </Button>
+                    <br></br>
+                    <br></br>
+                    <Button onClick={() => this.deleteBand(band._id)}>
+                      Delete my band
+                    </Button>
+                  </Card.Content>
+                </Card>
+              </Link>
+            );
+          })}
+        </Card.Group>
       </div>
     );
   }
 }
+
+
+
+export default withUser(UserBands);

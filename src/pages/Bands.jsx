@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import apiHandler from "../api/apiHandler";
 import { Link } from "react-router-dom";
-import { Card, Icon, Image } from "semantic-ui-react";
+import { Card, Image } from "semantic-ui-react";
 
 export default class Bands extends Component {
   state = {
@@ -25,7 +25,9 @@ export default class Bands extends Component {
     return (
       <div>
         <h1 className="centered-title"> BANDS </h1>
+
         <Link to={`/bands/add`}>ADD BAND</Link>
+
         <Card.Group>
           {this.state.bands.map((band) => {
             return (

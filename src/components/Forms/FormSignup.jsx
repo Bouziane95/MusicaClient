@@ -23,6 +23,7 @@ class FormSignup extends Component {
     lookingFor: [],
     instrumentsPlayed:[],
     location:[],
+    locationAddress:"",
   };
 
   getValueFromDropDown = (data) => {
@@ -69,6 +70,8 @@ class FormSignup extends Component {
   };
 
   render() {
+    console.log("la location")
+    console.log(this.state)
     return (
     <div className="signupDiv">
     <h1>Sign up</h1>
@@ -109,15 +112,24 @@ class FormSignup extends Component {
       </Form.Field>
       
       <Form.Field>
-        <label htmlFor="location">In which city you live ?</label>
+        <label htmlFor="location">Where do you live ?</label>
         <AutoComplete name="location" id ="location" onSelect= {this.handlePlace}/>
       </Form.Field>
 
+      <Form.Field>
+        <label htmlFor="favouriteBand">What's your favourite band ?</label>
+        <input type="text" id="favouriteBand" name="favouriteBand" />
+      </Form.Field>
 
+      <Form.Field>
+      <label htmlFor="lookingFor">What are you looking for ?</label>
       <DropDownLookingFor value={this.state.lookingFor} callBack = {this.getValueFromDropDown} />
-      <br/>
+      </Form.Field>
+      
+      <Form.Field>
+      <label htmlFor="lookingFor">What instrument.s do you play ?</label>
       <DropDownInstruments value={this.state.instrumentsPlayed} callBack = {this.getValueFromDropDownInstruments}/>
-      <br/>
+      </Form.Field>
 
       <Button type="submit" value="Submit" color='yellow'>Submit</Button>
     </Form>
