@@ -3,11 +3,14 @@ import apiHandler from "../api/apiHandler";
 import { Link } from "react-router-dom";
 import { Card, Icon, Image } from "semantic-ui-react";
 import { withUser } from "../components/Auth/withUser";
+import SearchBar from ".././components/SearchBar";
 
 class Home extends React.Component {
   state = {
     users: [],
     selectedUser: null,
+    filteredUsers: [],
+    search:[],
   };
 
   locationDistance(lat1, lon1, lat2, lon2, unit) {
@@ -35,8 +38,8 @@ class Home extends React.Component {
   }
 
   rankLocation() {
-    if (!this.props.context.user) return this.state.users;
-    const copyArray = [...this.state.users];
+    if (!this.props.context.user) return this.state.filteredUsers;
+    const copyArray = [...this.state.filteredUsers];
 
     for (let i = 0; i < copyArray.length; i++) {
       if (copyArray[i]._id === this.props.context.user._id) {
@@ -84,6 +87,7 @@ class Home extends React.Component {
         console.log(apiRes.data);
         this.setState({
           users: apiRes.data,
+          filteredUsers: apiRes.data
         });
       })
       .catch((apiErr) => {
@@ -95,12 +99,28 @@ class Home extends React.Component {
     this.setState({ selectedUser: index });
   };
 
+  handleFilter = (valueChecked) =>{
+    console.log(valueChecked)
+    if(valueChecked.length === 0){
+      this.setState({
+        filteredUsers: this.state.users
+      })
+      return;
+    }
+
+      this.setState({
+        filteredUsers: this.state.users.filter((user) => {
+          return user.instrumentsPlayed.reduce((acc,instru)=>acc || valueChecked.includes(instru) ,false)
+        })
+      })
+ 
+  }
+
   render() {
-    console.log("LE STATE")
-    console.log(this.state)
     return (
       <div>
         <h1 className="centered-title floating"> ♬ Users ♬</h1>
+        <SearchBar handleCheckBox={this.handleFilter}></SearchBar>
         <Card.Group>
           {this.rankLocation().map((user) => {
             return (
