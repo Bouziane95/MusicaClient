@@ -60,6 +60,8 @@ class ProfileRender extends Component {
     }
 
     render() {
+        console.log("BOUMBOUM")
+        console.log(this.props)
         return (
             <div>
             <div className="profileDiv">

@@ -23,6 +23,9 @@ class FormSignup extends Component {
     lookingFor: [],
     instrumentsPlayed:[],
     location:[],
+    link:"",
+    sex:"",
+    locationAddress: "",
   };
 
   getValueFromDropDown = (data) => {
@@ -99,6 +102,15 @@ class FormSignup extends Component {
       </Form.Field>
 
       <Form.Field>
+        <label htmlFor="sexe">Gender</label>
+        <select name="sex" id="sex">
+          <option name="sex" id="sex" value="W">Whatever</option>
+          <option name="sex" id="sex" value="M">Male</option>
+          <option name="sex" id="sex" value="F">Female</option>
+        </select>
+      </Form.Field>
+
+      <Form.Field>
         <label htmlFor="age">Age</label>
         <input type="number" id="age" name="age" placeholder="Vous devez avoir minimum 18 ans" min="18" max="100" />
       </Form.Field>
@@ -118,6 +130,11 @@ class FormSignup extends Component {
       <br/>
       <DropDownInstruments value={this.state.instrumentsPlayed} callBack = {this.getValueFromDropDownInstruments}/>
       <br/>
+
+      <Form.Field>
+        <label htmlFor="link">Link</label>
+        <input type="text" id="link" name="link" placeholder="https://example.com" />
+      </Form.Field>
 
       <Button type="submit" value="Submit" color='yellow'>Submit</Button>
     </Form>
