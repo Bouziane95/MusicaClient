@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+
+body {
+  background-color: ;
+}
 
 * {
   margin: 0;
@@ -17,6 +22,7 @@
   display: flex;
   align-content: center;
   justify-content: center;
+  
 }
 
 .web-title {
@@ -26,10 +32,28 @@
   justify-content: center;
   align-items: center;
   align-content: stretch;
-  font-family: "Shrikhand", cursive;
-  font-size: 45px;
-  background-color: rgb(255, 166, 43);
-  /* border-bottom: 1px solid black; */
+  /* font-family: "Shrikhand", cursive; */
+  font-family: 'Fugaz One', cursive;
+  font-size: 50px;
+  height: 80px;
+  border-bottom: 1px solid black;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+.music-note-one {
+  max-height: 40px;
+  position: relative;
+  bottom: 60px;
+  left: 500px;
+}
+
+.music-note-two {
+  max-height: 40px;
+  position: relative;
+  bottom:  100px;
+  left: 900px
 }
 
 /* ///CHAQUE ELEMENT DE LA NAVBAR/// */
@@ -46,7 +70,7 @@
   justify-content: space-around;
   align-items: center;
   align-content: stretch;
-  position: fixed;
+  position: absolute;
   z-index: 1;
 }
 
@@ -58,12 +82,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
-  grid-auto-rows: minmax(100px, auto);
-  /* flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: baseline;
-  align-content: stretch; */
+  grid-auto-rows: minmax(100px, auto);  
 }
 
 input[type="text"],
@@ -160,4 +179,31 @@ a {
 
 ul {
   list-style-type: none;
+}
+
+
+.floating {  
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+
+}
+
+@keyframes floating {
+  from { transform: translate(0,  0px); }
+  65%  { transform: translate(0, 15px); }
+  to   { transform: translate(0, -0px); }    
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
