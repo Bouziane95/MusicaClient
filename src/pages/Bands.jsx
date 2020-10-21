@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import apiHandler from "../api/apiHandler";
 import { Link } from "react-router-dom";
 import { Card, Image, Button } from "semantic-ui-react";
+import { withUser } from "../components/Auth/withUser";
 
-export default class Bands extends Component {
+class Bands extends Component {
   state = {
     bands: [],
   };
@@ -21,15 +22,21 @@ export default class Bands extends Component {
   }
 
   redirectAddBand = () => {
-    this.props.history.push("/bands/add")
-  }
+    this.props.history.push("/bands/add");
+  };
 
   render() {
     console.log(this.state.bands);
     return (
       <div>
         <h1 className="centered-title"> BANDS </h1>
-        <Button color="yellow" onClick={this.redirectAddBand}>ADD BAND</Button>
+
+        {this.props.context.isLoggedIn && (
+          <Button color="yellow" onClick={this.redirectAddBand}>
+            ADD BAND
+          </Button>
+        )}
+
         <Card.Group>
           {this.state.bands.map((band) => {
             return (
@@ -83,8 +90,6 @@ export default class Bands extends Component {
                     <h4>This band is located in :</h4>
                     <span>{band.bandLocation}</span>
                     <br></br>
-
-
                   </Card.Content>
                 </Card>
               </Link>
@@ -95,3 +100,5 @@ export default class Bands extends Component {
     );
   }
 }
+
+export default withUser(Bands);
