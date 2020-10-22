@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from 'semantic-ui-react'
+import { Button, Label } from 'semantic-ui-react'
 import { UserContext } from "../Auth/UserContext";
 import { withRouter } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
@@ -11,6 +11,7 @@ class FormSignin extends Component {
   state = {
     email: "",
     password: "",
+    errorLogin: "",
   };
 
   handleChange = (event) => {
@@ -38,13 +39,16 @@ class FormSignin extends Component {
       })
       .catch((error) => {
         console.log(error);
+        this.setState({
+          errorLogin:"Invalid credential"
+        })
+        
         // Display error message here, if you set the state
       });
   };
 
   render() {
     return (
-      
       <div className="signinDiv">
       <h1>Sign in</h1>
       <form className="signinForm" onChange={this.handleChange} onSubmit={this.handleSubmit}>
@@ -54,6 +58,14 @@ class FormSignin extends Component {
         <input type="password" placeholder="password" id="password" name="password" />
         <Button color='yellow'>Submit</Button>
       </form>
+      <div className= "errorCredentials">
+      {this.state.errorLogin && (
+        <React.Fragment>
+          <Label color="red">Invalid credentials</Label>
+        </React.Fragment>
+      )}
+      </div>
+
       </div>
       
     );

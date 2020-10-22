@@ -13,3 +13,10 @@
     margin-left: 37%;
     margin-top: 13%;
   }
+
+  .errorCredentials{
+    width: 40%;
+    text-align: center;
+    padding: 20px;
+    border-radius: 2%;
+  }

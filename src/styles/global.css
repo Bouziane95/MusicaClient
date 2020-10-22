@@ -39,10 +39,6 @@
   font-size: 40px;
 }
 
-.item {
-  background-color: red;
-}
-
 .web-title {
   display: flex;
   flex-direction: row;

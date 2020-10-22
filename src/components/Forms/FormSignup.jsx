@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { UserContext } from "../Auth/UserContext";
 import apiHandler from "../../api/apiHandler";
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form,Label } from 'semantic-ui-react'
 import DropDownLookingFor from '../Forms/DropDownLookingFor'
 import DropDownInstruments from "../Forms/DropDownInstruments"
 import {buildFormData} from "../../Utils"
 import AutoComplete from "../../pages/AutoComplete"
 import "../../styles/signup.css"
+
 
 class FormSignup extends Component {
   static contextType = UserContext;
@@ -26,6 +27,8 @@ class FormSignup extends Component {
     link:"",
     sex:"",
     locationAddress: "",
+    errorEmailTaken:"",
+    errorComplete: "complete all survey",
   };
 
   getValueFromDropDown = (data) => {
@@ -57,6 +60,9 @@ class FormSignup extends Component {
     })
     .catch((apiError) => {
       console.log(apiError);
+      this.setState({
+        errorEmailTaken:"Email Taken"
+      })
     });
   }
 
@@ -72,7 +78,6 @@ class FormSignup extends Component {
   };
 
   render() {
-    console.log(this.state)
     return (
     <div className="signupDiv">
     <h1>Sign up</h1>
@@ -86,6 +91,7 @@ class FormSignup extends Component {
         <label htmlFor="email">Email</label>
         <input type="email" id="email" name="email" />
       </Form.Field>
+      
 
       <Form.Field>
         <label htmlFor="password">Password</label>
@@ -148,6 +154,14 @@ class FormSignup extends Component {
 
       <Button type="submit" value="Submit" color='yellow'>Submit</Button>
     </Form>
+
+    <div className= "errorEmailTaken">
+      {this.state.errorEmailTaken && (
+        <React.Fragment>
+          <Label size="large" color="red">Email already taken</Label>
+        </React.Fragment>
+      )}
+      </div>
     </div>
     
     );
