@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from "react-router-dom"
 import {withRouter} from "react-router-dom";
 import apiHandler from ".././api/apiHandler"
 import {Button, Card, Icon, Image} from "semantic-ui-react"
@@ -6,7 +7,7 @@ import { withUser } from '../components/Auth/withUser';
 import "../styles/profileRender.css"
 
 class ProfileRender extends Component {
-    
+
     state={
         firstName : "",
         lastName: "",
@@ -15,9 +16,10 @@ class ProfileRender extends Component {
         description: "",
         lookingFor: [],
         instrumentsPlayed: [],
-        favouriteband: "",
+        favouriteBand: "",
         link: "",
         email: "",
+        locationAddress:"",
     }
 
     componentDidMount(){
@@ -34,6 +36,7 @@ class ProfileRender extends Component {
                 favouriteband: apiRes.data.favouriteBand,
                 link: apiRes.data.link,
                 email: apiRes.data.email,
+                locationAddress: apiRes.data.locationAddress,
             })
         })
         .catch((error) => {
@@ -64,40 +67,79 @@ class ProfileRender extends Component {
     }
 
     render() {
-        console.log("BOUMBOUM")
-        console.log(this.props)
         return (
-            <div>
-            <div className="profileDiv">
-            <div className = "profileCard">
-            <Card>
-                    <Image src = {this.state.profilePicture} alt= {this.state.firstName} wrapped ui = {false} />
+            <div className="container">
+            <Card className="profilePage-div" fluid>
                     <Card.Content>
-                        <Card.Header>{this.state.firstName}</Card.Header>
+                    <Image src = {this.state.profilePicture} alt= {this.state.firstName}/>
+                    <br></br>
+                    <br></br>
+                    <h2>{this.state.firstName} {this.state.lastName}</h2>
                         <Card.Meta>
-                        <span>{this.state.age} ans</span>
+                        <p>{this.state.age} years old</p>
+                        <p>{this.state.locationAddress}</p>
+                        <hr className="orange-line"/>
                         </Card.Meta>
-                        <Card.Description>
-                        {this.state.description}
-                        </Card.Description>
-                    </Card.Content>
-                    <Card.Content extra>
-                    <p>
-                        <Icon name='music' />
-                        {this.state.instrumentsPlayed}
-                    </p>
+                        <br></br>
+                        <Icon name= "user outline" color = "yellow"></Icon>
+                        <h3>Who am I ?</h3>
+                        <p class ="simple-text">{this.state.description}</p>
+                        <br></br>
+                        <hr className="orange-line"></hr>
+                        <br></br>
+                        <Icon name="bullhorn" color="yellow"></Icon>
+                        <h3>What am I searching for ?</h3>
+                        {this.state.lookingFor.map((seekingFor) => {
+                            return(
+                                <div>
+                                    <p class="simple-text">- {seekingFor}</p>
+                                </div>
+                            );
+                        })}
+
+                        <br></br>
+                        <hr className="orange-line"></hr>
+                        <br></br>
+                        <Icon name="play" color="yellow"></Icon>
+                        <h3>What instrument.s do I play ?</h3>
+                        {this.state.instrumentsPlayed.map((instrument) => {
+                            return (
+                                <div>
+                                    <p class="simple-text">- {instrument}</p>
+                                </div>
+                            );
+                        })}
+
+                        <br></br>
+                        <hr className="orange-line"></hr>
+                        <br></br>
+                        <Icon name="heart" color="yellow"></Icon>
+                        <h3>My favourite band</h3>
+                        <p class="simple-text">{this.state.favouriteBand}</p>
+                        <br></br>
+                        <hr className="orange-line"></hr>
+                        <br></br>
+                        <Icon name="smile outline" color="yellow"></Icon>
+                        <h3>Check my music ! </h3>
+                        <Link className="simple-text" to={this.state.link}>{this.state.link}</Link>
+                        <br></br>
+                        <hr className="orange-line"></hr>
+                        <br></br>
+                        <Icon name="mail" color="yellow"></Icon>
+                        <h3>Contact:</h3>
+                        <h4> {this.state.email}</h4>
                     </Card.Content>
                 </Card>
-            </div>    
-            </div>
             
             <div className="buttonsEditDelete">
+                <Button>
+                    <Link to={"/"}>Close</Link>
+                </Button>
                 <Button onClick={this.redirectEdit}>Edit my account</Button>
                 <Button color= "red" onClick={this.deleteAccount}>Delete my account</Button>
+                
             </div>
-
             </div>
-            
         )
     }
 }

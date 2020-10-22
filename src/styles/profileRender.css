@@ -1,18 +1,34 @@
-.profileDiv{
-   display: flex;
-   justify-content: center;
-   align-content: center;
-}
-
 .buttonsEditDelete{
     text-align: center;
-    margin-top: 2%;
 }
 
-.profileCard{
-    width: 25%;
-    margin-top: 10%;
-    border: 2px solid grey;
-    border-radius: 2%;
-    box-shadow: 12px 12px 10px 1px rgba(255, 166, 43, .2);
+.profilePage-div {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+    align-content: stretch;
+    width: 70%;
+    text-align: center;
 }
+
+.orange-line {
+    color: rgb(255, 183, 3);
+    margin-right: 20px;
+    margin-left: 20px;
+    border: 1px solid rgb(255, 183, 3);
+  }
+
+  .container {
+      margin: 50px 250px 100px 250px;
+  }
+
+ img.ui.image {
+      max-width: 300px;
+      border: 1px solid black;
+  }
+
+  .simple-text {
+    font-size: 15px;
+  }

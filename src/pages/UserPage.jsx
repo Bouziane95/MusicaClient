@@ -21,7 +21,6 @@ export default class UserPage extends Component {
   }
 
   render() {
-    console.log(this.state.user);
     return (
       <div className="container">
         <Card className="userpage-div" fluid>
