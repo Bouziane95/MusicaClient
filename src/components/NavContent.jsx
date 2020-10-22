@@ -20,7 +20,8 @@ const NavContent = (props) => {
   }
 
   return (
-    <Menu icon="labeled">
+<div>
+    <Menu icon="labeled" fluid widths={5}>
       <Menu.Item name="Home">
         <Icon name="home" basic color='black'/>
         <NavLink exact to="/">
@@ -78,6 +79,8 @@ const NavContent = (props) => {
         </React.Fragment>
       )}
     </Menu>
+    <div className="orange-style"></div>
+    </div>
   );
 };
 

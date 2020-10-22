@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import apiHandler from "../api/apiHandler";
 import { Link } from "react-router-dom";
-import { Card, Image, Button } from "semantic-ui-react";
+import { Card, Image, Button, Icon } from "semantic-ui-react";
 import { withUser } from "../components/Auth/withUser";
+
 
 class Bands extends Component {
   state = {
@@ -43,22 +44,24 @@ class Bands extends Component {
               <Link key={band._id} to={`/bands/${band._id}`}>
                 <Card>
                   <Image
-                    className="bandPic"
+                    className="bandpage-div"
                     src={band.bandPicture}
                     alt="bandPic"
                     wrapped
                     ui={false}
                   />
-                  <Card.Content>
-                    <Card.Header>{band.bandName}</Card.Header>
+                  <Card.Content textAlign="center">
+                    <Icon name="music" color="yellow"></Icon>
+                    <h3>{band.bandName}</h3>
                     <Card.Meta>
                       {" "}
                       Created by {band.bandBoss_id.firstName}{" "}
                       {band.bandBoss_id.lastName}
                     </Card.Meta>
-
+                    <br></br>
                     <hr className="orange-line"></hr>
                     <br></br>
+                    <Icon name="play" color="yellow"></Icon>
                     <h4>This band likes to play :</h4>
 
                     {band.musicStyle.map((genre) => {
@@ -74,6 +77,7 @@ class Bands extends Component {
                     <hr className="orange-line"></hr>
 
                     <br></br>
+                    <Icon name="bullhorn" color="yellow"></Icon>
                     <h4>This band is looking for a :</h4>
 
                     {band.lookingFor.map((instrument) => {
@@ -87,6 +91,7 @@ class Bands extends Component {
                     <br></br>
                     <hr className="orange-line"></hr>
                     <br></br>
+                    <Icon name="home" color="yellow"></Icon>
                     <h4>This band is located in :</h4>
                     <span>{band.bandLocation}</span>
                     <br></br>

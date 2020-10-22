@@ -15,6 +15,9 @@ class ProfileRender extends Component {
         description: "",
         lookingFor: [],
         instrumentsPlayed: [],
+        favouriteband: "",
+        link: "",
+        email: "",
     }
 
     componentDidMount(){
@@ -28,6 +31,9 @@ class ProfileRender extends Component {
                 lookingFor: apiRes.data.lookingFor,
                 instrumentsPlayed: apiRes.data.instrumentsPlayed,
                 profilePicture: apiRes.data.profilePicture,
+                favouriteband: apiRes.data.favouriteBand,
+                link: apiRes.data.link,
+                email: apiRes.data.email,
             })
         })
         .catch((error) => {
