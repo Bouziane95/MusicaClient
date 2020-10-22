@@ -96,31 +96,44 @@ class Home extends React.Component {
   };
 
   render() {
-    console.log("LE STATE")
-    console.log(this.state)
+    console.log("LE STATE");
+    console.log(this.state);
     return (
       <div>
-        <h1 className="centered-title floating"> ♬ Users ♬</h1>
+        <h1 className="centered-title floating">Users</h1>
+        <div class="muzieknootjes">
+          <div class="noot-1">&#9835; &#9833;</div>
+          <div class="noot-2">&#9833;</div>
+          <div class="noot-3">&#9839; &#9834;</div>
+          <div class="noot-4">&#9834;</div>
+        </div>
+
+        <div className="gradient-line"></div>
+
         <Card.Group>
           {this.rankLocation().map((user) => {
             return (
               <Link key={user._id} to={`/users/${user._id}`}>
                 <Card>
                   <Image
+                    id="bandpage-div"
+                    className="bandpage-div"
                     src={user.profilePicture}
                     alt={user.firstName}
                     wrapped
                     ui={false}
                   />
-                  <Card.Content>
-                    <Card.Header>
+                  <Card.Content textAlign="center">
+                    <Icon name="user outline" color="yellow"></Icon>
+                    <h2>
                       {user.firstName} {user.lastName}{" "}
-                    </Card.Header>
+                    </h2>
                     <Card.Meta>
                       <span>{user.age} years old</span>
                     </Card.Meta>
                     <hr className="orange-line"></hr>
                     <br></br>
+                    <Icon name="play" color="yellow"></Icon>
                     <h4>I am playing :</h4>
                     {user.instrumentsPlayed.map((instrument) => {
                       return (
@@ -134,6 +147,7 @@ class Home extends React.Component {
                     <br></br>
                     <hr className="orange-line"></hr>
                     <br></br>
+                    <Icon name="bullhorn" color="yellow"></Icon>
                     <h4>I am looking for a :</h4>
 
                     {user.lookingFor.map((seekingInstrument) => {
@@ -147,11 +161,13 @@ class Home extends React.Component {
                     <br></br>
                     <hr className="orange-line"></hr>
                     <br></br>
+                    <Icon name="heart" color="yellow"></Icon>
                     <h4>My favourite band:</h4>
                     <p>{user.favouriteBand}</p>
                     <br></br>
                     <hr className="orange-line"></hr>
                     <br></br>
+                    <Icon name="home" color="yellow"></Icon>
                     <h4>Located in:</h4>
                     {user.locationAddress}
                   </Card.Content>

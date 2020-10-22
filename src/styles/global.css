@@ -2,10 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
 
-body {
-  background-color: ;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -17,12 +13,34 @@ body {
   border: 1px solid rgb(255, 183, 3);
 }
 
+.orange-style {
+  height: 100px;
+  background: linear-gradient(-45deg, #ee7752, #dc2f02, #ffb703, #F77F00);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+  border-bottom: black solid 1px;
+}
+
+/* .gradient-line {
+  margin: 50px 300px 0px 300px;
+  height: 10px;
+  background: linear-gradient(-45deg, #ee7752, #dc2f02, #ffb703, #F77F00);
+	background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  border: 1px solid black;
+} */
+
 .centered-title {
-  padding-top: 80px;
+  padding-top: 20px;
   display: flex;
   align-content: center;
   justify-content: center;
-  
+  font-family: 'Fugaz One', cursive;
+  font-size: 40px;
+}
+
+.item {
+  background-color: red;
 }
 
 .web-title {
@@ -37,7 +55,7 @@ body {
   font-size: 50px;
   height: 80px;
   border-bottom: 1px solid black;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #ee7752, #dc2f02, #ffb703, #F77F00);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 }
@@ -56,13 +74,11 @@ body {
   left: 900px
 }
 
-/* ///CHAQUE ELEMENT DE LA NAVBAR/// */
-/* .ui.menu .item {
-  background-color: red;
-} */
+.ui.menu .item {
+
+}
 
 .ui.menu {
-
   margin-top: 0;
   display: flex;
   flex-direction: row;
@@ -206,4 +222,69 @@ ul {
 	100% {
 		background-position: 0% 50%;
 	}
+}
+
+/* /// */
+
+.muzieknootjes {
+  display: block;
+  margin: auto;
+  position: relative;
+  width: 30%;
+  min-width: 300px;
+  height: 80px;
+  border: 0px solid #000;
+}
+
+.noot-1,
+.noot-2,
+.noot-3,
+.noot-4 {
+  position: absolute;
+  animation: notes 2s infinite linear;
+  font-size: 25px;
+  opacity: 0;
+}
+
+.noot-1 {
+  top: 60px;
+  left: 0;
+  animation-delay: 0.5s;
+}
+
+.noot-2 {
+  top: 30px;
+  left: 30%;
+  animation-delay: 1s;
+}
+
+.noot-3 {
+  top: 90px;
+  left: 60%;
+  animation-delay: 1.5s;
+}
+
+.noot-4 {
+  top: 40px;
+  left: 90%;
+  animation-delay: 2s;
+}
+
+@keyframes notes {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5) translate(50%, -50%);
+  }
+  80% {
+    opacity: 0;
+    transform: scale(1.5) translate(100%, -100%);
+  }
+  100% {
+    transform: scale(1.5) translate(100%, -100%);
+    opacity: 0;
+  }
 }
