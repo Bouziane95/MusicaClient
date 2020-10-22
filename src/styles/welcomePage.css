@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+/* font-family: 'Fredoka One', cursive; */
+
+
+.welcome {
+  margin-top: 100px;
+  font-size: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: baseline;
+  align-content: stretch;
+  font-family: "Gothic A1", sans-serif;
+}
+
+.musica-title {
+  font-size: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: baseline;
+  align-content: stretch;
+  font-family: "Fugaz One", cursive;
+  border-top: 11px solid rgb(255, 186, 8);
+  border-bottom: 11px solid rgb(255, 186, 8);
+  margin: 0px 600px 0px 600px;
+}
+
+.border-b {
+  border-bottom: 7px solid rgb(255, 186, 8);
+  margin: 40px 600px 13px 600px;
+}
+
+.where {
+  font-size: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: baseline;
+  align-content: center;
+  font-family: "Gothic A1", sans-serif;
+}
+
+.column-pres {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+}
+
+.column-pres img {
+  max-width: 90px;
+  margin-top: 10px;
+}
+
+.justi-text {
+  font-family: "Gothic A1", sans-serif;
+  font-size: 18px;
+  text-align: center;
+  margin: 10px 300px 0px 300px;
+}
+
+.justi-text p {
+  margin-top: 8px;
+}
+
+#intro {
+  margin-bottom: 20px;
+}
+
+.partition {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: 100px;
+}
+
+.place {
+  position: relative;
+  bottom: 250px;
+}
+
+.info-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: stretch;
+  position: relative;
+  bottom: 180px;
+}
+
+.info-col {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-around;
+  text-align: center;
+  margin-right: 90px;
+  margin-left: 90px;
+}
+
+.info-col p {
+  margin-top: 15px;
+  font-size: 20px;
+}
+
+.info-col h1 {
+  margin-top: 15px;
+}
+
+.info-col h2 {
+    margin-top: 15px;
+  }
+
+.border-btwo {
+  border-bottom: 7px solid rgb(255, 186, 8);
+  margin: 40px 600px 13px 600px;
+  position: relative;
+  bottom: 290px;
+}

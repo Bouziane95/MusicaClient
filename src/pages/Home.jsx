@@ -103,17 +103,14 @@ class Home extends React.Component {
     return (
 
       <div>
-        <h1 className="centered-title floating">Users</h1>
+        <h1 className="centered-title ">Users</h1>
+      <div className="lookingFor"><p> What are you looking for ?</p> </div>
+
+        <div id="search">
         <SearchBar handleCheckBox={this.handleFilter}></SearchBar>
-        
-        <div class="muzieknootjes">
-          <div class="noot-1">&#9835; &#9833;</div>
-          <div class="noot-2">&#9833;</div>
-          <div class="noot-3">&#9839; &#9834;</div>
-          <div class="noot-4">&#9834;</div>
         </div>
 
-        <div className="gradient-line"></div>
+        {/* <div className="gradient-line"></div> */}
 
         <Card.Group>
           {this.rankLocation().map((user) => {

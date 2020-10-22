@@ -43,19 +43,19 @@ class UserBands extends Component {
     console.log(this.props.context.isLoggedIn);
     return (
       <div>
-        <h1 className="centered-title"> BANDS </h1>
+        <h1 className="centered-title"> My Bands </h1>
 
         {this.props.context.isLoggedIn && (
-        <Link to={`/bands/add`}>ADD BAND</Link>
+        <Link to={`/bands/add`}>Add a band</Link>
         )}
 
         <Card.Group>
           {this.state.bands.map((band) => {
             return (
               <Link key={band._id} to={`/bands/${band._id}`}>
-                <Card>
+                <Card className="bandpage-div" fluid>
                   <Image
-                    className="bandPic"
+                    className="bandpage-div"
                     src={band.bandPicture}
                     alt="bandPic"
                     wrapped
@@ -106,7 +106,7 @@ class UserBands extends Component {
 
                     <hr className="orange-line"></hr>
                     <br></br>
-                    <Button>
+                    <Button color="yellow">
                       <Link to={`/profile/${band._id}/bands/edit`}>
                         {" "}
                         Edit my band{" "}
@@ -114,7 +114,7 @@ class UserBands extends Component {
                     </Button>
                     <br></br>
                     <br></br>
-                    <Button onClick={() => this.deleteBand(band._id)}>
+                    <Button color="red" onClick={() => this.deleteBand(band._id)}>
                       Delete my band
                     </Button>
                   </Card.Content>
