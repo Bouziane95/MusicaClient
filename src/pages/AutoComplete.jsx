@@ -65,7 +65,6 @@ export default class AutoComplete extends Component {
 
     render() {
         const { results, isLoading } = this.state;
-        console.log(this.state)
         return (
     <div className="AutocompletePlace">
         <input

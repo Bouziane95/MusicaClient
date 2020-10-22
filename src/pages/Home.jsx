@@ -37,7 +37,7 @@ class Home extends React.Component {
     }
   }
 
-  rankLocation() {
+  rankLocation =() => {
     if (!this.props.context.user) return this.state.filteredUsers;
     const copyArray = [...this.state.filteredUsers];
 
@@ -100,6 +100,10 @@ class Home extends React.Component {
   }
 
   render() {
+
+
+    console.log(this.rankLocation(),"this is location")
+
     return (
 
       <div>

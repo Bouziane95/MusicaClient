@@ -72,8 +72,6 @@ class FormSignup extends Component {
   };
 
   render() {
-    console.log("la location")
-    console.log(this.state)
     return (
     <div className="signupDiv">
     <h1>Sign up</h1>
