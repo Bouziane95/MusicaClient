@@ -7,7 +7,6 @@ import "../styles/profileRender.css"
 
 class ProfileRender extends Component {
     
-
     state={
         firstName : "",
         lastName: "",
@@ -17,7 +16,6 @@ class ProfileRender extends Component {
         lookingFor: [],
         instrumentsPlayed: [],
     }
-
 
     componentDidMount(){
         console.log(this.state)
