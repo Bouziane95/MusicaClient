@@ -21,11 +21,18 @@ const NavContent = (props) => {
 
   return (
     <div>
-      <Menu icon="labeled" fluid widths={5}>
+      <Menu icon="labeled" fluid widths={6}>
         <Menu.Item name="Home">
           <Icon name="home" basic color="black" />
           <NavLink exact to="/">
             Home
+          </NavLink>
+        </Menu.Item>
+
+        <Menu.Item name="Users">
+          <Icon name="search" basic color="black" />
+          <NavLink exact to="/users">
+            Users
           </NavLink>
         </Menu.Item>
 
