@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import apiHandler from "../api/apiHandler";
 import { Link } from "react-router-dom";
-import { Button, Card, Icon, Image } from "semantic-ui-react";
+import { Button, Card, Image } from "semantic-ui-react";
 import { withUser } from "../components/Auth/withUser";
 
 class UserBands extends Component {

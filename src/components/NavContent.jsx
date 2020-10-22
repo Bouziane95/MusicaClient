@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Icon, Menu } from "semantic-ui-react";
+import { Icon, Menu } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { withUser } from "../components/Auth/withUser";

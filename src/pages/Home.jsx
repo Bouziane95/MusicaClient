@@ -1,7 +1,7 @@
 import React from "react";
 import apiHandler from "../api/apiHandler";
 import { Link } from "react-router-dom";
-import { Card, Icon, Image } from "semantic-ui-react";
+import { Card, Image } from "semantic-ui-react";
 import { withUser } from "../components/Auth/withUser";
 import SearchBar from ".././components/SearchBar";
 
@@ -66,25 +66,11 @@ class Home extends React.Component {
       );
     });
   }
-
-  // componentDidMount() {
-  //   apiHandler
-  //     .getAllUsers("/users")
-  //     .then((apiRes) => {
-  //       this.setState({
-  //         users: apiRes.data,
-  //       });
-  //     })
-  //     .catch((apiErr) => {
-  //       console.log(apiErr);
-  //     });
-  // }
-
+  
   componentDidMount() {
     apiHandler
       .getAllUsers("/users")
       .then((apiRes) => {
-        console.log(apiRes.data);
         this.setState({
           users: apiRes.data,
           filteredUsers: apiRes.data
@@ -99,21 +85,18 @@ class Home extends React.Component {
     this.setState({ selectedUser: index });
   };
 
-  handleFilter = (valueChecked) =>{
-    console.log(valueChecked)
-    if(valueChecked.length === 0){
+  handleFilter = (value) =>{
+    if(value.length === 0){
       this.setState({
         filteredUsers: this.state.users
       })
       return;
     }
-
       this.setState({
         filteredUsers: this.state.users.filter((user) => {
-          return user.instrumentsPlayed.reduce((acc,instru)=>acc || valueChecked.includes(instru) ,false)
+          return user.instrumentsPlayed.reduce((acc,instru)=>acc || value.includes(instru) ,false)
         })
       })
- 
   }
 
   render() {
