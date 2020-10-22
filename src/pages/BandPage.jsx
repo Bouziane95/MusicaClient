@@ -81,14 +81,18 @@ export default class Bandpage extends Component {
                 <br></br>
                 <hr className="orange-line"></hr>
                 <br></br>
-                <Icon name="smile outline" color="yellow"></Icon>
-                <h3>Check our music!</h3>
-
-                <Link to={this.state.bands.link}>{this.state.bands.link}</Link>
-                <br></br>
-                <br></br>
-                <hr className="orange-line"></hr>
-                <br></br>
+                {this.state.bands.link &&(
+                  <React.Fragment>
+                    <Icon name="smile outline" color="yellow"></Icon>
+                    <h3>Check our music!</h3>
+                    <Link to={this.state.bands.link}>{this.state.bands.link}</Link>
+                    <br></br>
+                    <br></br>
+                    <hr className="orange-line"></hr>
+                    <br></br>
+                  </React.Fragment>
+                )}
+                
 
                 <Button color="yellow">
                   {" "}

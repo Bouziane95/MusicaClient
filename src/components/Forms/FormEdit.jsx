@@ -22,7 +22,7 @@ class FormEdit extends Component {
         instrumentsPlayed:[],
         age:"",
         location: [],
-        link:"",
+        link:null,
         sex:"",
         locationAddres:"",
     };

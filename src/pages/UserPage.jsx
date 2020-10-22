@@ -20,7 +20,10 @@ export default class UserPage extends Component {
       });
   }
 
+  
+
   render() {
+    
     return (
       <div className="container">
         <Card className="userpage-div" fluid>
@@ -29,7 +32,6 @@ export default class UserPage extends Component {
               <CardContent>
                 <Image src={this.state.user.profilePicture} alt="userpic" />
                 <br></br>
-
                 <br></br>
                 <h2>
                   
@@ -80,16 +82,16 @@ export default class UserPage extends Component {
                 <br></br>
                 <hr className="orange-line"></hr>
                 <br></br>
+                {this.state.user.link &&(
+                <React.Fragment>
                 <Icon name="smile outline" color="yellow"></Icon>
                 <h3>Check my music ! </h3>
                 <Link className="simple-text" to={this.state.user.link}>{this.state.user.link}</Link>
                 <br></br>
                 <hr className="orange-line"></hr>
                 <br></br>
-                {/* <Icon name="group" color="yellow"></Icon>
-                <h3>{this.state.user.myBands}My bands</h3>
-                <hr className="orange-line"></hr> */}
-                {/* <br></br> */}
+                </React.Fragment>
+                )}
                 <Icon name="mail" color="yellow"></Icon>
                 <h3>Contact:</h3>
                 <h4> {this.state.user.email}</h4>

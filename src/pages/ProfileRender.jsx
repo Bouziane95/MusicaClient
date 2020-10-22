@@ -119,12 +119,16 @@ class ProfileRender extends Component {
                         <br></br>
                         <hr className="orange-line"></hr>
                         <br></br>
-                        <Icon name="smile outline" color="yellow"></Icon>
-                        <h3>Check my music ! </h3>
-                        <Link className="simple-text" to={this.state.link}>{this.state.link}</Link>
-                        <br></br>
-                        <hr className="orange-line"></hr>
-                        <br></br>
+                        {this.state.link &&(
+                            <React.Fragment>
+                                <Icon name="smile outline" color="yellow"></Icon>
+                                <h3>Check my music ! </h3>
+                                <Link className="simple-text" to={this.state.link}>{this.state.link}</Link>
+                                <br></br>
+                                <hr className="orange-line"></hr>
+                                <br></br>
+                            </React.Fragment>
+                        )}
                         <Icon name="mail" color="yellow"></Icon>
                         <h3>Contact:</h3>
                         <h4> {this.state.email}</h4>

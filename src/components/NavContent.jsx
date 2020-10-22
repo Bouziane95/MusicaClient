@@ -47,13 +47,7 @@ const NavContent = (props) => {
             <Icon name="play" basic color='black' />
             <Link to={`/profile/${context.user._id}/bands`}>My Bands</Link>
           </Menu.Item>
-
-          {/* <Menu.Item>
-            <Icon name= "music"/>
-            <Link to ={`/profile/${context.user._id}/edit`}>
-              Edit
-            </Link>
-            </Menu.Item> */}
+          
           <Menu.Item name="LogOut">
             <Icon name="log out" basic color='black' />
             <NavLink onClick={handleLogout} to="/">

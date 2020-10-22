@@ -27,6 +27,7 @@ class Bands extends Component {
   };
 
   render() {
+    console.log("BANDSSS")
     console.log(this.state.bands);
     return (
       <div>

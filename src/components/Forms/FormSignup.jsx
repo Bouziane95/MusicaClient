@@ -43,7 +43,7 @@ class FormSignup extends Component {
         : event.target.value;
 
     const key = event.target.name;
-
+    
     this.setState({ [key]: value });
   };
 
@@ -72,6 +72,7 @@ class FormSignup extends Component {
   };
 
   render() {
+    console.log(this.state)
     return (
     <div className="signupDiv">
     <h1>Sign up</h1>
@@ -142,7 +143,7 @@ class FormSignup extends Component {
 
       <Form.Field>
         <label htmlFor="link">Link</label>
-        <input type="text" id="link" name="link" placeholder="https://example.com" />
+        <input type="text" id="link" name="link" placeholder="https://example.com"/>
       </Form.Field>
 
       <Button type="submit" value="Submit" color='yellow'>Submit</Button>
