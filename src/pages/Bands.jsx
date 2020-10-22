@@ -33,11 +33,11 @@ class Bands extends Component {
       <div>
         <h1 className="centered-title"> BANDS </h1>
 
-        {this.props.context.isLoggedIn && (
+        {/* {this.props.context.isLoggedIn && (
           <Button color="yellow" onClick={this.redirectAddBand}>
             ADD BAND
           </Button>
-        )}
+        )} */}
 
         <Card.Group>
           {this.state.bands.map((band) => {

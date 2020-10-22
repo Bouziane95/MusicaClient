@@ -7,6 +7,7 @@ import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import MusicaHead from "./components/MusicaHead";
+import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
 import Bands from "./pages/Bands";
 import BandPage from "./pages/BandPage";
@@ -17,16 +18,20 @@ import ProfileEdit from "./pages/ProfileEdit";
 import UserBands from "./pages/UserBands";
 import UserBandsEdit from "./pages/UserBandsEdit";
 import 'semantic-ui-css/semantic.min.css'
+import WelcomePage from "./pages/WelcomePage";
 
 function App() {
   return (
     <div className="App">
     <MusicaHead/>
     <NavContent/>
+    <Footer/>
       {/* <NavMain /> */}
       <Switch>
         {/* ///HOME ROUTE/// */}
+        
         <Route exact path="/" component={Home} />
+        <Route exact path="/W" component={WelcomePage} />
         {/* ///AUTH ROUTES/// */}
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/signup" component={Signup} />

@@ -115,7 +115,7 @@ export default class UserBandsEdit extends Component {
 
           <Form.Field>
             <label> Describe your band </label>
-            <input
+            <textarea
               name="description"
               type="string"
               value={this.state.description}

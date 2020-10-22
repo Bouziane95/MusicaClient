@@ -84,7 +84,7 @@ export default class AddBand extends Component {
           
           <Form.Field>
             <label> Describe your band </label>
-            <input name="description" type="string" />
+            <textarea name="description" type="string" />
           </Form.Field>
 
           <Form.Field>
