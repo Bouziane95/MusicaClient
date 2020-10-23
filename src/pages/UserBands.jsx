@@ -47,7 +47,7 @@ class UserBands extends Component {
     console.log(this.props.context.isLoggedIn);
     return (
       <div>
-        <h1 className="centered-title"> My Bands </h1>
+        <h1 className="centered-title"> MY BANDS</h1>
 
         {this.props.context.isLoggedIn && (
         <Button color="yellow" onClick={this.redirectAddBand}>

@@ -5,6 +5,12 @@
     margin-top: 10%;
 }
 
+.signupDiv h1{
+    position: relative;
+    left: 348px;
+    margin-bottom: 15px;
+}
+
 .signupForm{
     width: 70%;
     text-align: center;

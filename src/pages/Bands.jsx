@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { Card, Image, Button, Icon } from "semantic-ui-react";
 import { withUser } from "../components/Auth/withUser";
 
-
 class Bands extends Component {
   state = {
     bands: [],
@@ -27,7 +26,7 @@ class Bands extends Component {
   };
 
   render() {
-    console.log("BANDSSS")
+    console.log("BANDSSS");
     console.log(this.state.bands);
     return (
       <div>

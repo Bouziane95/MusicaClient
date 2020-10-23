@@ -49,8 +49,11 @@ class FormSignin extends Component {
 
   render() {
     return (
+      
+      
       <div className="signinDiv">
-      <h1>Sign in</h1>
+      <h1 >Sign in</h1>
+      
       <form className="signinForm" onChange={this.handleChange} onSubmit={this.handleSubmit}>
         <label htmlFor="email">Email</label>
         <input type="email" placeholder="mymail@mail.fr" id="email" name="email" />

@@ -107,10 +107,10 @@ class Home extends React.Component {
     return (
 
       <div>
-        <h1 className="centered-title ">Users</h1>
+        <h1 className="centered-title ">USERS</h1>
       <div className="lookingFor"><p> What are you looking for ?</p> </div>
 
-        <div id="search">
+        <div  id="search">
         <SearchBar handleCheckBox={this.handleFilter}></SearchBar>
         </div>
 
@@ -137,6 +137,7 @@ class Home extends React.Component {
                     <Card.Meta>
                       <span>{user.age} years old</span>
                     </Card.Meta>
+                    <br></br>
                     <hr className="orange-line"></hr>
                     <br></br>
                     <Icon name="play" color="yellow"></Icon>

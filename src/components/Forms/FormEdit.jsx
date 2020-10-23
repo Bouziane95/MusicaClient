@@ -102,6 +102,7 @@ class FormEdit extends Component {
         <div className= "editDiv">
         <Form className="editForm" onChange={this.handleChange} onSubmit={this.handleSubmit}>
             <Form.Field>
+            <label htmlFor="profilePic">Profile Picture</label>
                 <UploadWidget onFileSelect={this.handleFileSelect} name = "profilePicture" id ="profilePicture">
                     Upload Image
                 </UploadWidget>
@@ -137,12 +138,14 @@ class FormEdit extends Component {
             </Form.Field>
 
             <Form.Field>
-                <label htmlFor="location">In which city you live now ?</label>
+                <label htmlFor="location">Where do you live ? </label>
                 <AutoComplete name="location" id ="location" onSelect= {this.handlePlace}  />
             </Form.Field>
 
+            <label htmlFor="lookingFor">What are you looking for ? </label>
             <DropDownLookingFor  value = {this.state.lookingFor} callBack = {this.getValueFromDropDown}/>
             <br/>
+            <label htmlFor="location">What instruments do you play ? </label>
             <DropDownInstruments value = {this.state.instrumentsPlayed} callBack = {this.getValueFromDropDownInstruments}/>
             <br/>
 

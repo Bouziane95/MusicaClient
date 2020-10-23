@@ -14,9 +14,22 @@
     margin-top: 13%;
   }
 
+  .signinDiv h1 {
+position: relative;
+left: 141px;
+margin-bottom: 15px;
+
+  }
+
   .errorCredentials{
     width: 40%;
     text-align: center;
     padding: 20px;
     border-radius: 2%;
+  }
+
+  .center-sign {
+    position: relative;
+    top: 170px;
+    left: 675px;
   }

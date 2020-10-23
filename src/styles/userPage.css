@@ -10,6 +10,11 @@
     text-align: center;
 }
 
+
+.ui.fluid.card.userpage-div {
+  margin-top: 140px;
+  }
+
 .orange-line {
     color: rgb(255, 183, 3);
     margin-right: 20px;
@@ -19,6 +24,7 @@
 
   .container {
       margin: 50px 250px 100px 250px;
+
   }
 
  img.ui.image {
