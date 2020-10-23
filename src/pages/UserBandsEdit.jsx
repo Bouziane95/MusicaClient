@@ -98,7 +98,6 @@ export default class UserBandsEdit extends Component {
             <input name="bandName" type="text" value={this.state.bandName} />
           </Form.Field>
 
-          {/* ///DROPDOWN///  */}
           <DropDownMusic
             callBack={this.getValueFromDropDownMusicStyle}
             value={this.state.musicStyle}

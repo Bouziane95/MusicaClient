@@ -42,7 +42,6 @@ class UserBands extends Component {
   };
 
   render() {
-    console.log(this.props.context.isLoggedIn);
     return (
       <div>
         <h1 className="centered-title"> My Bands </h1>

@@ -70,7 +70,7 @@ class FormEdit extends Component {
         
         apiHandler.updateUser("/users/" + this.props.match.params.id, fd)
         .then((apiRes) => {
-            this.props.history.push("/profile")
+            this.props.history.push("/profile/" + this.props.match.params.id)
         })
         .catch((apiError) => {
             console.log(apiError);
