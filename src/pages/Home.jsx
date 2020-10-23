@@ -100,10 +100,7 @@ class Home extends React.Component {
   }
 
   render() {
-
-
-    console.log(this.rankLocation(),"this is location")
-
+    
     return (
 
       <div>
@@ -113,9 +110,7 @@ class Home extends React.Component {
         <div  id="search">
         <SearchBar handleCheckBox={this.handleFilter}></SearchBar>
         </div>
-
-        {/* <div className="gradient-line"></div> */}
-
+        
         <Card.Group>
           {this.rankLocation().map((user) => {
             return (

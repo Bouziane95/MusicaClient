@@ -30,15 +30,15 @@ function App() {
       <Switch>
         {/* ///HOME ROUTE/// */}
         
-        <Route exact path="/users" component={Home} />
+        <ProtectedRoute exact path="/users" component={Home} />
         <Route exact path="/" component={WelcomePage} />
         {/* ///AUTH ROUTES/// */}
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/signup" component={Signup} />
         {/* /// BANDS ROUTE /// */}
-        <Route exact path="/bands" component={Bands} />
-        <Route exact path="/bands/add" component={AddBand} />
-        <Route exact path="/bands/:id" component={BandPage} />
+        <ProtectedRoute exact path="/bands" component={Bands} />
+        <ProtectedRoute exact path="/bands/add" component={AddBand} />
+        <ProtectedRoute exact path="/bands/:id" component={BandPage} />
         {/* ///PROFILE ROUTES/// */}
         <ProtectedRoute exact path="/profile/:id" component={Profile} />
         <ProtectedRoute exact path="/profile/:id/edit" component={ProfileEdit} />

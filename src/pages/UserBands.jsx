@@ -3,6 +3,7 @@ import apiHandler from "../api/apiHandler";
 import { Link } from "react-router-dom";
 import { Button, Card, Image } from "semantic-ui-react";
 import { withUser } from "../components/Auth/withUser";
+import "../styles/userBands.css"
 
 class UserBands extends Component {
 
@@ -15,8 +16,6 @@ class UserBands extends Component {
       .getUserBands("/users/me/bands")
       .then((apiRes) => {
         this.setState({ bands: apiRes.data });
-        console.log("je suis ici");
-        console.log(apiRes.data);
       })
       .catch((apiErr) => {
         console.log(apiErr);
@@ -27,7 +26,6 @@ class UserBands extends Component {
     apiHandler
       .deleteBand("/bands/" + bandId)
       .then((apiRes) => {
-        console.log(apiRes.data);
         this.props.history.push("/profile/" + this.props.match.params.id);
       })
       .catch((err) => {
@@ -44,15 +42,17 @@ class UserBands extends Component {
   };
 
   render() {
-    console.log(this.props.context.isLoggedIn);
     return (
       <div>
         <h1 className="centered-title"> MY BANDS</h1>
 
         {this.props.context.isLoggedIn && (
-        <Button color="yellow" onClick={this.redirectAddBand}>
-            Add a Band
-          </Button>
+          <div className="div-button">
+            <Button color="yellow" onClick={this.redirectAddBand}>
+               Add a Band
+            </Button>
+          </div>
+        
         )}
 
         <Card.Group>
@@ -69,11 +69,7 @@ class UserBands extends Component {
                   />
                   <Card.Content>
                     <Card.Header>{band.bandName}</Card.Header>
-                    <Card.Meta>
-                      {" "}
-                      Created by {band.bandBoss_id.firstName}{" "}
-                      {band.bandBoss_id.lastName}
-                    </Card.Meta>
+                <br></br>
 
                     <hr className="orange-line"></hr>
                     <br></br>

@@ -2,8 +2,15 @@
     display: flex;
     flex-direction: column;
     margin-left: 22%;
-    margin-top: 10%;
+    margin-top: 25px;
+    margin-bottom: 30px;
+    
 }
+
+.ok{
+    font-family: 'Fugaz One', cursive;
+}
+
 
 .editBandForm{
     width: 70%;

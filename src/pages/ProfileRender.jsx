@@ -101,7 +101,6 @@ class ProfileRender extends Component {
                 </div>
               );
             })}
-
             <br></br>
             <hr className="orange-line"></hr>
             <br></br>
@@ -139,21 +138,23 @@ class ProfileRender extends Component {
             <Icon name="mail" color="yellow"></Icon>
             <h3>Contact:</h3>
             <h4> {this.state.email}</h4>
+            <br></br>
+                <hr className="orange-line"></hr>
+                <br></br>
+            <div className="buttonsEditDelete">   
+                <Button>
+                    <Link to={"/users"}>Close</Link>
+                </Button>
+                <Button color="yellow" onClick={this.redirectEdit}>Edit my account</Button>
+                <Button color= "red" onClick={this.deleteAccount}>Delete my account</Button>
+    </div>
           </Card.Content>
         </Card>
-
-        <div className="buttonsEditDelete">
-          <Button>
-            <Link to={"/"}>Close</Link>
-          </Button>
-          <Button onClick={this.redirectEdit}>Edit my account</Button>
-          <Button color="red" onClick={this.deleteAccount}>
-            Delete my account
-          </Button>
-        </div>
-      </div>
-    );
+            </div>
+        )
+            }
+    
   }
-}
+
 
 export default withRouter(withUser(ProfileRender));

@@ -12,7 +12,6 @@ const options = [
   { key: 'Violin', text: 'Violin', value: 'Violin'},
   { key: 'Electric Guitar', text: 'Electric guitar', value: 'Electric Guitar'},
   { key: 'Clarinet', text: 'Clarinet', value: 'Clarinet'},
-  { key: 'Harp', text: 'Harp', value: 'Harp'},
   { key: 'Accordion', text: 'Accordion', value: 'Accordion'},
   { key: 'Harp', text: 'Harp', value: 'Harp'},
   { key: 'Drum', text: 'Drum', value: 'Drum'},
