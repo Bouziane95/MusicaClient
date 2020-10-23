@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import apiHandler from "../api/apiHandler";
 import { Link } from "react-router-dom";
-import { Card, Image, Button, Icon } from "semantic-ui-react";
+import { Card, Image, Icon } from "semantic-ui-react";
 import { withUser } from "../components/Auth/withUser";
 
 
@@ -27,8 +27,6 @@ class Bands extends Component {
   };
 
   render() {
-    console.log("BANDSSS")
-    console.log(this.state.bands);
     return (
       <div>
         <h1 className="centered-title"> BANDS </h1>

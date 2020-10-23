@@ -19,7 +19,7 @@ class FormSignup extends Component {
     firstName: "",
     lastName: "",
     age: "",
-    profilePicture: "https://thevoicefinder.com/wp-content/themes/the-voice-finder/images/default-img.png",
+    profilePicture: "",
     description: "",
     lookingFor: [],
     instrumentsPlayed:[],

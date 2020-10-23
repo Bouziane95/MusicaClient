@@ -67,9 +67,7 @@ class FormEdit extends Component {
     updateUser(){
         const fd = new FormData();
         buildFormData(fd, this.state);
-        console.log(fd)
-        console.log(this.state)
-
+        
         apiHandler.updateUser("/users/" + this.props.match.params.id, fd)
         .then((apiRes) => {
             this.props.history.push("/profile")

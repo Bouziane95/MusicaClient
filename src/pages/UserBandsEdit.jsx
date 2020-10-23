@@ -23,7 +23,6 @@ export default class UserBandsEdit extends Component {
     apiHandler
       .getOneBand(this.props.match.params.id)
       .then((apiResponse) => {
-        console.log(apiResponse.data);
         this.setState({
           bandName: apiResponse.data.bandName,
           musicStyle: apiResponse.data.musicStyle,
@@ -33,17 +32,14 @@ export default class UserBandsEdit extends Component {
           bandLocation: apiResponse.data.bandLocation,
           link: apiResponse.data.link,
         });
-        console.log(this.state.bandName);
       })
       .catch((error) => console.log(error));
-    // console.log(this.props.match.params.id);
   }
 
   handleChange = (event) => {
     const name = event.target.name;
     const value =
       event.target.type === "file" ? event.target.files[0] : event.target.value;
-    console.log(name, value);
     this.setState({ [name]: value });
   };
 

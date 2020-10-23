@@ -13,11 +13,9 @@ export default class Bandpage extends Component {
     apiHandler
       .getOneBand(this.props.match.params.id)
       .then((apiResponse) => {
-        // console.log(apiResponse.data);
         this.setState({ bands: apiResponse.data });
       })
       .catch((error) => console.log(error));
-    // console.log(this.props.match.params.id);
   }
 
   render() {
@@ -92,8 +90,6 @@ export default class Bandpage extends Component {
                     <br></br>
                   </React.Fragment>
                 )}
-                
-
                 <Button color="yellow">
                   {" "}
                   <Link to={`/bands`}>CLOSE</Link>

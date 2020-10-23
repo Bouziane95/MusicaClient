@@ -65,7 +65,6 @@ export default {
   },
 
   updateBand(endpoint, data) {
-    console.log(endpoint)
     return service.patch(endpoint, data);
   },
 

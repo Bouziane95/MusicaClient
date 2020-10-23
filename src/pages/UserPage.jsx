@@ -95,13 +95,15 @@ export default class UserPage extends Component {
                 <Icon name="mail" color="yellow"></Icon>
                 <h3>Contact:</h3>
                 <h4> {this.state.user.email}</h4>
+                <hr className="orange-line"></hr>
+                <br></br>
+                <Button color="yellow">
+                  <Link to={`/users`}>Close</Link>
+                </Button>
               </CardContent>
             </React.Fragment>
           )}
         </Card>
-        <Button>
-          <Link to={`/`}>Close</Link>
-        </Button>
       </div>
     );
   }

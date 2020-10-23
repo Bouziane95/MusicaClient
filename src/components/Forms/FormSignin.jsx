@@ -42,8 +42,6 @@ class FormSignin extends Component {
         this.setState({
           errorLogin:"Invalid credential"
         })
-        
-        // Display error message here, if you set the state
       });
   };
 
@@ -65,9 +63,7 @@ class FormSignin extends Component {
         </React.Fragment>
       )}
       </div>
-
       </div>
-      
     );
   }
 }
