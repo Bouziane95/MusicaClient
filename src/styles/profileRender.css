@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+.ui.fluid.card.profilePage-div {
+    margin-top: 140px;
+    }
+
 .profilePage-div {
 	display: flex;
 	flex-direction: column;

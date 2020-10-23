@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { Card, Image, Icon } from "semantic-ui-react";
 import { withUser } from "../components/Auth/withUser";
 
-
 class Bands extends Component {
   state = {
     bands: [],

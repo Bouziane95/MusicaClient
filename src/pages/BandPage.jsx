@@ -38,6 +38,7 @@ export default class Bandpage extends Component {
                   {" "}
                   <h5>{this.state.bands.bandLocation}</h5>
                 </Card.Meta>
+                <br></br>
 
                 <hr className="orange-line"></hr>
                 <br></br>

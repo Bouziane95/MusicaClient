@@ -40,7 +40,6 @@ export default class UserPage extends Component {
                 <Card.Meta>
                   <p>{this.state.user.age} years old</p>
                   <p>{this.state.user.locationAddress}</p>
-                  <hr className="orange-line"></hr>
                 </Card.Meta>
                 <br></br>
                 <Icon name="user outline" color="yellow"></Icon>

@@ -5,7 +5,7 @@ import DropDownMusic from "../components/Forms/DropDownMusic";
 import DropDownLookingFor from "../components/Forms/DropDownLookingFor";
 import { buildFormData } from "../Utils";
 import UploadWidget from "../uploadWidget";
-import "../styles/editBand.css"
+import "../styles/editBand.css";
 
 export default class UserBandsEdit extends Component {
   state = {
@@ -80,9 +80,13 @@ export default class UserBandsEdit extends Component {
   render() {
     return (
       <div className="editBandDiv">
-        <h1>Edit your band</h1>
+        <h1 className="centered-title">Edit my band</h1>
 
-        <Form className="editBandForm" onChange={this.handleChange} onSubmit={this.handleSubmit}>
+        <Form
+          className="editBandForm"
+          onChange={this.handleChange}
+          onSubmit={this.handleSubmit}
+        >
           <Form.Field>
             <UploadWidget
               onFileSelect={this.handleFileSelect}
@@ -98,14 +102,21 @@ export default class UserBandsEdit extends Component {
             <input name="bandName" type="text" value={this.state.bandName} />
           </Form.Field>
 
-          <DropDownMusic
-            callBack={this.getValueFromDropDownMusicStyle}
-            value={this.state.musicStyle}
-          />
-          <DropDownLookingFor
-            callBack={this.getValueFromDropDownLookingFor}
-            value={this.state.lookingFor}
-          />
+          {/* ///DROPDOWN///  */}
+          <Form.Field>
+            <label> What style.s are you playing ?</label>
+            <DropDownMusic
+              callBack={this.getValueFromDropDownMusicStyle}
+              value={this.state.musicStyle}
+            />
+          </Form.Field>
+
+          <Form.Field>
+            <DropDownLookingFor
+              callBack={this.getValueFromDropDownLookingFor}
+              value={this.state.lookingFor}
+            />
+          </Form.Field>
           {/* ///DROPDOWN/// */}
 
           <Form.Field>
@@ -127,7 +138,9 @@ export default class UserBandsEdit extends Component {
             <input name="link" type="string" value={this.state.link} />
           </Form.Field>
 
-          <Button color="yellow" type="submit">LETS GO</Button>
+          <Button color="yellow" type="submit">
+            LETS GO
+          </Button>
         </Form>
       </div>
     );

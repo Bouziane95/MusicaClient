@@ -9,6 +9,11 @@
   text-align: center;
 }
 
+.ui.fluid.card.bandpage-div {
+/* margin-top: 30px; */
+
+}
+
 .justify-text {
   text-align: justify;
   align-content: center;
@@ -22,15 +27,16 @@
   height: 300px !important;
 }
 
-.orange-line {
+hr.orange-line {
   color: rgb(255, 183, 3);
-  margin-right: 20px;
-  margin-left: 20px;
-  border: 1px solid rgb(255, 183, 3);
+  margin-right: 60px;
+  margin-left: 60px;
+  border: 1px   solid rgb(255, 183, 3);
 }
 
 .container {
   margin: 50px 250px 100px 250px;
+  
 }
 
 img.ui.image {

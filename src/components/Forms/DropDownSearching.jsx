@@ -8,7 +8,7 @@ const options = [
 
 const DropdownExampleMultipleSelection = ({value, callBack}) => {
 
-  return <Dropdown value={value} onChange={(event, data) => callBack(data)} placeholder="What are you looking for ?" fluid multiple selection options={options} />
+  return <Dropdown className="foo" value={value} onChange={(event, data) => callBack(data)} placeholder="What are you looking for ?" fluid multiple selection options={options} />
 }
 
 export default DropdownExampleMultipleSelection

@@ -44,7 +44,7 @@ class UserBands extends Component {
   render() {
     return (
       <div>
-        <h1 className="centered-title"> My Bands </h1>
+        <h1 className="centered-title"> MY BANDS</h1>
 
         {this.props.context.isLoggedIn && (
           <div className="div-button">
