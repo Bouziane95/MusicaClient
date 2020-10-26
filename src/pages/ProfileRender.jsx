@@ -15,10 +15,10 @@ class ProfileRender extends Component {
     description: "",
     lookingFor: [],
     instrumentsPlayed: [],
-    favouriteBand: "",
     link: "",
     email: "",
     locationAddress: "",
+    favouritBand:"",
   };
 
   componentDidMount() {
@@ -26,15 +26,16 @@ class ProfileRender extends Component {
     apiHandler
       .getOneUser(this.props.match.params.id)
       .then((apiRes) => {
+        console.log(apiRes.data.favouriteBand)
         this.setState({
           firstName: apiRes.data.firstName,
           lastName: apiRes.data.lastName,
+          favouritBand: apiRes.data.favouriteBand,
           age: apiRes.data.age,
           description: apiRes.data.description,
           lookingFor: apiRes.data.lookingFor,
           instrumentsPlayed: apiRes.data.instrumentsPlayed,
           profilePicture: apiRes.data.profilePicture,
-          favouriteband: apiRes.data.favouriteBand,
           link: apiRes.data.link,
           email: apiRes.data.email,
           locationAddress: apiRes.data.locationAddress,
@@ -71,6 +72,7 @@ class ProfileRender extends Component {
   };
 
   render() {
+    console.log(this.state)
     return (
       <div className="container">
         <Card className="profilePage-div" fluid>
@@ -119,7 +121,7 @@ class ProfileRender extends Component {
             <br></br>
             <Icon name="heart" color="yellow"></Icon>
             <h3>My favourite band</h3>
-            <p class="simple-text">{this.state.favouriteBand}</p>
+            <p class="simple-text">- {this.state.favouritBand}</p>
             <br></br>
             <hr className="orange-line"></hr>
             <br></br>
